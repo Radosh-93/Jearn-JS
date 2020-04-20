@@ -1,0 +1,25 @@
+temp = 10;
+(9 / 5)* temp + 32 = 50;
+=======================
+color == "orange"
+if ("pink") = false;
+if ("orange") = true;
+=====================
+name = "Martha"
+name + ", " + "you've won!"
+Martha, you've won!
+========================
+yourLevel >= 5;
+if (yourLevel == 2)  false;
+if (yourLevel == 5)  true;
+if (yourLevel == 7)  true;
+========================
+var level = 5;
+points = 30000;
+bonus = 3300;
+(level * points) + bonus = 153300;
+===============================
+var color = "pink";
+if (color != "orange")  true;
+==============================
+1000 + "108"
