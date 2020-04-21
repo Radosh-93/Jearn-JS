@@ -160,3 +160,17 @@ let data1 = "name|phone|address";
 let vals = data1.split("|");
 console.log(vals) // масив [name, phone, address]
 /*============метод split()========*/
+
+/*========instanceof========*/
+function Duck(sound) {
+	this.sound = sound;
+	this.quack = function () {
+		console.log(sound)
+	}
+};
+let toy = new Duck("quack quack");
+toy.quack();
+
+console.log(typeof toy);
+console.log(toy instanceof Duck);
+/*========instanceof========*/
