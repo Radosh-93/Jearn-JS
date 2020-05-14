@@ -66,7 +66,10 @@ let fiat2 = {
 	model: "500"
 };
 let lot = [chevy, taxi, fiat1, fiat2];
-console.log(find(chevy));
+console.log("Find Car:" + find(fiat2));
+console.log("Find Car:" + find(taxi));
+console.log("Find Car:" + find(chevy));
+console.log("Find Car:" + find(fiat1));
 
 /*==========LieDetector================*/
 function lieDetectorTest() {
