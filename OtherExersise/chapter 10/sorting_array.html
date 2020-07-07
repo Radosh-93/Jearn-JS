@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sorting</title>
+</head>
+
+<body>
+	<script>
+		function compareNubers(num1, num2) {
+			return num2 - num1;
+			/*
+			if (num1 > num2) {
+				return 1;
+			} else if (num1 === num2) {
+				return 0;
+			} else {
+				return -1;
+			}
+			*/
+		};
+		let numbersArray = [60, 50, 62, 58, 54, 54, 1, 100];
+		let news = numbersArray.sort(compareNubers);
+		console.log(numbersArray);
+		console.log(news);
+
+	</script>
+</body>
+
+</html>
