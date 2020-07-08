@@ -47,6 +47,24 @@
 						function () { console.log("Would you like cola, water or wine?") } :
 						function () { console.log("Your choice is cola or water.") };
 			return orderFunction;
+		};
+		function createDinnerOrder(passenger) {
+			let orderFunction;
+			if (passenger.ticket === "firstclass") {
+				orderFunction = function () {
+					console.log("Would you like a chicken or pasta?")
+				};
+			} else if (passenger.ticket === "coach") {
+				orderFunction = function () {
+					console.log("Your choice is nuts or crackers.")
+				};
+			} else {
+				orderFunction = function () {
+					console.log("Your choise is snacks or cheese plate.")
+				}
+			}
+
+			return orderFunction;
 		}
 		function createDinnerOrder(passenger) {
 			let orderFunction =
