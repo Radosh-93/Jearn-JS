@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		window.onload = function () {
+			let button = document.getElementById('bake');
+			button.onclick = function () {
+				console.log('Time to bake the cookie.');
+				cookie.bake(2500);
+			};
+		}
+		let cookie = {
+			instructions: 'Preheat oven to 350...',
+			bake: function (time) {
+				console.log('Baking the cookies.');
+				setTimeout(done, time);
+			}
+		};
+		function done() {
+			alert('Cookie are ready, take them out to cool.');
+			console.log('Cooling the cookies.');
+			let cool = function () {
+				alert('Cookies aro cool, time to eat!');
+			};
+			setTimeout(cool, 1000);
+		}
+		setTimeout(function () {
+			alert('Time to take the cookies out of the oven')
+		}, 600000);
+
+		/*===========Вправа====*/
+
+		function vaccine(dosage) {
+			if (dosage > 0) {
+				inject(dosage);
+			}
+		}
+		administer(patient, vaccine, time);
+		// or
+		administer(patient, function (dosage) {
+			if (dosage > 0) {
+				inject(dosage);
+			}
+		}, time)
+
+	</script>
+</body>
+
+</html>
