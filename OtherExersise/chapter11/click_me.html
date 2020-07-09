@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Cleck me!</title>
+	<style>
+		body,
+		button {
+			margin: 10px;
+		}
+
+		div {
+			margin: 10px;
+		}
+	</style>
+	<script>
+		window.onload = function () {
+			let count = 0
+			let button = document.getElementById('clickme');
+			let div = document.getElementById('message');
+			button.onclick = function () {
+				count++
+				div.innerHTML = 'You clicked me ' + count + ' times!'
+			};
+		};
+
+		let a = function (food) {
+			if (food === 'cookies') {
+				alert('More please')
+			} else if (food === 'cake') {
+				alert('Yum yum')
+			}
+		};
+		(a)('cookies');
+	</script>
+</head>
+
+<body>
+	<button id="clickme">Click me!</button>
+	<div id="message"></div>
+</body>
+
+</html>

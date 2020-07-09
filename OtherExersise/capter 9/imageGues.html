@@ -19,25 +19,25 @@
 		function init() {
 			let images = document.getElementsByTagName("img");
 			for (let i = 0; i < images.length; i++) {
-				images[i].onmouseover = showAnswer;
-				images[i].onmouseout = reblur;
+				images[i].onclick = showAnswer;
 
 			};
 			console.log(images);
 		};
 		function showAnswer(eventObj) {
 			let image = eventObj.target;
-			let name = image.id;
-			name = 'img/' + name + '.jpg';
-			image.src = name; // Атрибуту src задается значение "zero.jpg"
+			image.src = 'img/' + image.id + '.jpg'; // Атрибуту src задается значение "zero.jpg"
+			setTimeout(function () {
+				return image.src = 'img/' + image.id + 'blur.jpg';
+			}, 3000)
 		};
-		function reblur(eventObj) {
-			let image = eventObj.target;
-			let name = image.id;
-			name = 'img/' + name + 'blur.jpg';
-			image.src = name;
-			// Атрибуту src задается значение "zero.jpg"
-		};
+		// function reblur(eventObj) {
+		// 	let image = eventObj.target;
+		// 	let name = image.id;
+		// 	name = 'img/' + name + 'blur.jpg';
+		// 	image.src = name;
+		// 	// Атрибуту src задается значение "zero.jpg"
+		// };
 
 	</script>
 </head>
