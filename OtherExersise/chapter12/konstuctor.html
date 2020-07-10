@@ -14,6 +14,48 @@
 			this.type = type;
 			this.canFly = canFly
 		}
+		function Dog(name, breed, weight) {
+			this.name = name;
+			this.breed = breed;
+			this.weight = weight;
+			this.bark = function () {
+				if (this.weight > 10) {
+					//alert(this.name + ' says Woof!')
+				} else {
+					//alert(this.name + ' says Yip!')
+				}
+			};
+		}
+		let fido = new Dog('Fido', 'Mixed', 38);
+		let fluffy = new Dog('Fluffy', 'Poodle', 30);
+		let spot = new Dog('Spot', 'Chihuahua', 10);
+		let dogs = [fido, fluffy, spot];
+		for (let i = 0; i < dogs.length; i++) {
+			dogs[i].bark();
+		}
+		/*=========================Кофейные напитки===============*/
+
+		function Coffee(roast, ounces) {
+			this.roast = roast;
+			this.ounces = ounces;
+			this.getSize = function () {
+				if (this.ounces === 8) {
+					return 'small'
+				} else if (this.ounces === 12) {
+					return 'medium'
+				} else if (this.ounces === 16) {
+					return 'large'
+				}
+			};
+			this.toSring = function () {
+				return "You've ordered a " + this.getSize() + " " + this.roast + " coffee."
+			};
+		}
+		let houseBlend = new Coffee('House Blend', 12);
+		console.log(houseBlend.toSring());
+
+		let darkRoast = new Coffee('Dard Roast', 16);
+		console.log(darkRoast.toSring());
 	</script>
 </head>
 

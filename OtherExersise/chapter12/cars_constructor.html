@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Cars manufuctory</title>
+	<script>
+		let cadiParams = {
+			make: 'GM',
+			model: 'Cadillac',
+			year: 1955,
+			color: 'tan',
+			passengers: 5,
+			convertible: false,
+			mileage: 12892
+		};
+		let cadi1 = new Car(cadiParams);
+
+		function Car(params) {
+			this.make = params.make;
+			this.model = params.model;
+			this.year = params.year;
+			this.color = params.color;
+			this.passengers = params.passengers;
+			this.convertible = params.convertible;
+			this.mileage = params.mileage;
+			this.started = false;
+			this.start = function () {
+				this.started = true;
+			};
+			this.stop = function () {
+				this.started = false;
+			};
+			this.drive = function () {
+				if (this.started) {
+					console.log(this.make + " " + this.model + " goes zoom zoom!")
+				} else {
+					console.log("Start the engine first. " + this.make)
+				}
+			};
+		}
+		let chevy = new Car("Chevy", "Bel Air", 1957, "red", 2, false, 1021);
+		let cadi = new Car("GM", "Cadillac", 1955, "tan", 5, false, 12892);
+		let taxi = new Car("Webville Motors", "Taxi", 1955, "yellow", 4, false, 281341);
+		let fiat = new Car("Fiat", "500", 1957, "Medium Blue", 2, false, 88000);
+		let testCar = new Car("Test", "test", 2014, "Blue", 4, false, 21);
+		let cars = [chevy, cadi, taxi, fiat, testCar];
+
+		for (let i = 0; i < cars.length; i++) {
+			cars[i].start();
+			let random = Math.floor(Math.random() * 4) + 1;
+			for (let j = 0; j < random; j++) {
+				cars[i].drive();
+			}
+			cars[i].stop();
+			console.log(random)
+
+		}
+		console.log('========================================');
+		cadi1.start();
+		cadi1.drive();
+		cadi1.drive();
+		cadi1.stop();
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>
