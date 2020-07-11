@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Car Prototype</title>
+	<script>
+		function CarPrototype() {
+			this.make = "Webville Motors";
+			this.year = 2013;
+			this.start = function () {
+				this.started = true;
+			};
+			this.stop = function () {
+				this.started = false;
+			};
+			this.drive = function () {
+				if (this.started) {
+					console.log(this.make + "Woom woom")
+				} else {
+					console.log("First start the engene.")
+				}
+			}
+		}
+		let newCar = new CarPrototype();
+		newCar.model = "Model X";
+		newCar.color = "blue";
+		newCar.wheel = "R16";
+		newCar.started = false;
+		newCar.stereoSystem = "RDX2000";
+		newCar.currentTime = new Date();
+		newCar.fluxCapacitor = { type: "Mr. Fusion" };
+		newCar.fluxCapacitor.name = "Fluxy Muxy";
+
+		//console.log(newCar);
+
+		/*=============Prototype=================*/
+
+		function Dog(name, breed, weight) { // Це конструктор
+			this.name = name;
+			this.breed = breed;
+			this.weight = weight;
+		}
+
+		Dog.prototype.species = "Canine";
+		Dog.prototype.bark = function () {
+			if (this.weight > 25) {
+				console.log(this.name + " sais Woof!")
+			} else {
+				console.log(this.name + " says Yip!")
+			}
+		};
+		Dog.prototype.run = function () {
+			console.log("Run!")
+		};
+		Dog.prototype.wag = function () {
+			console.log("Wag!")
+		};
+		Dog.prototype.sitting = false;
+		Dog.prototype.sit = function () {
+			if (this.sitting) {
+				console.log(this.name + " is already sitting")
+			} else {
+				this.sitting = true;
+				console.log(this.name + " is now sitting")
+			}
+		};
+		function ShowDog(name, breed, weight, handler) { // конструктор
+			Dog.call(this, name, breed, weight);
+			this.handler = handler;
+		}
+
+		ShowDog.prototype = new Dog(); //робимо наслідування від Dog
+		ShowDog.prototype.constructor = ShowDog;
+
+		ShowDog.prototype.league = "Webville"
+		ShowDog.prototype.stack = function () {
+			if (this.sitting) {
+				this.sitting = false;
+				console.log(this.name + " is now stacking")
+			} else {
+				console.log(this.name + " is already stacking")
+			}
+		};
+		ShowDog.prototype.gait = function (comand) {
+			console.log(this.name + " is now " + comand + "ing");
+		}
+		ShowDog.prototype.groom = function () {
+			console.log("Groom")
+		}
+
+		let chak = new Dog("Chak", "labr", 30);
+		let fluffy = new Dog("Fluffy", "Poodle", 38);
+		let spot = new Dog("Spot", "Chihuahua", 10);
+		spot.bark = function () {
+			console.log(this.name + " says Woof!")
+		};
+		let barnaby = new Dog("Barnaby", "Basset Hound", 55);
+		let scotty = new ShowDog("Scotty", "Scottish Terrier", 15, "Cookie");
+		let beatrice = new ShowDog("Beatrice", "Pomeranian", 5, "Hamilton")
+
+		chak.bark();
+		fluffy.bark();
+		spot.bark();
+		scotty.bark();
+		beatrice.bark();
+		scotty.gait("Walk");
+		beatrice.groom();
+
+
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>

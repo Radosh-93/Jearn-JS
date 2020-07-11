@@ -56,6 +56,14 @@
 
 		console.log(limo.make + " " + limo.model + " is a " + typeof limo); // Webvile Motors limo is a object
 		console.log(limoDog.name + " is a " + typeof limoDog); // Rhapsody in Blue is a object
+
+		function dogCatcher(obj) {
+			if (obj instanceof Dog) {
+				return true
+			} else {
+				return false
+			}
+		}
 	</script>
 </head>
 

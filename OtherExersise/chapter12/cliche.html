@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Cliche</title>
+	<script>
+		String.prototype.cliche = function () {
+			let cliche = ["lock and load", "touch base", "open the kimono"];
+
+			for (let i = 0; i < cliche.length; i++) {
+				let index = this.indexOf(cliche[i]);
+				if (index >= 0) {
+					return true
+				}
+			}
+			return false;
+		};
+		String.prototype.palindrome = function () {
+			let len = this.length - 1;
+			for (let i = 0; i <= len; i++) {
+				if (this.charAt(i) !== this.charAt(len - i)) {
+					return false;
+				}
+				if (i === (len - i)) {
+					return true;
+				}
+			}
+			return true;
+		}
+
+		let sentences = ["I'll send my car around to pick you up",
+			"Let's touch base in tho morning and see where are",
+			"We don't want to open the kimono, we just want to inform them."]
+
+		for (let i = 0; i < sentences.length; i++) {
+			let phrase = sentences[i];
+			if (phrase.cliche()) {
+				console.log("CLICHE ALERT: " + phrase)
+			}
+		}
+
+		let words = ["wow", "dad", "son"];
+		for (let i = 0; i < words.length; i++) {
+			if (words[i].palindrome()) {
+				console.log("Alert palindrome: " + words[i]);
+			}
+		}
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>

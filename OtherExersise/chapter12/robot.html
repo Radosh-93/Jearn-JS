@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Prototype Robot</title>
+	<script>
+		function Robot(name, year, owner) { //коструктор
+			this.name = name;
+			this.year = year;
+			this.owner = owner;
+		}
+		Robot.prototype.maker = "ObjectsRUs";
+		Robot.prototype.speak = function () {
+			console.log("Speak!")
+		};
+		Robot.prototype.makeCoffee = function () {
+			console.log("Make coffee!")
+		};
+		Robot.prototype.blinkLights = function () {
+			console.log("Light!")
+		};
+		function SpaceRobot(name, year, owner, homePlanet) { //конструктор
+			this.name = name;
+			this.year = year;
+			this.owner = owner;
+			this.homePlanet = homePlanet;
+		}
+		SpaceRobot.prototype = new Robot(); // наслідування від Robot
+
+		SpaceRobot.prototype.speak = function () {
+			alert(this.name + " says Sir, If I may venture an option...")
+		};
+		SpaceRobot.prototype.pilot = function () {
+			alert(this.name + " says Thrusters? Are they important?")
+		}
+
+		let robby = new Robot("Robby", 1956, "Dr.Morbius");
+		robby.onOffSwitch = true;
+		robby.makeCoffee = function () {
+			console.log("Make coffee from Starbucks")
+		};
+		let rosie = new Robot("Rosie", 1962, "George Jetson");
+		rosie.cleanHouse = function () {
+			console.log("Clean house")
+		};
+
+		console.log(robby.name + " was made by " + robby.maker + " in " + robby.year + " and is owned by " + robby.owner);
+		robby.makeCoffee();
+		robby.blinkLights();
+
+		console.log(rosie.name + " was made by " + rosie.maker + " in " + rosie.year + " and is owned by " + rosie.owner);
+		rosie.cleanHouse();
+
+		let c3po = new SpaceRobot("C3PO", 1977, "Luke Skywalker", "Tatooine");
+		c3po.speak();
+		c3po.pilot();
+		console.log(c3po.name + " was made by " + c3po.maker);
+
+		let simon = new SpaceRobot("Simon", 2009, "Carla Diana", "Earth");
+		simon.makeCoffee();
+		simon.blinkLights();
+		simon.speak();
+
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>
