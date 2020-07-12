@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Function</title>
+	<script>
+		function callPayment(currency = '$') { //чтобы вызвать без аргумента
+			let amount = +prompt('На какую сумму Вы хотите пополнить счет?');
+			alert(`Счет пополенен а суму ${amount} ${currency}`);
+		}
+		//callPayment(); 
+
+		function result() {
+			let number = +prompt('Введите число');
+			let result = (number * 327) / 10;
+			alert(`Ваше число: ${result}`)
+		}
+		//result();
+
+		function multi(num2 = 5) {// "= 5" - чтобы вызвать без аргумента
+			let num1 = +prompt('Введите число для умножения');
+			let result = num1 * num2;
+			alert(`Результат умножения ${result}`)
+		}
+		//multi(5);
+
+		function multi100() {
+			let num = +prompt('Введите число для умножения на 100');
+			return (num * 100);
+		}
+		//let result100 = multi100();
+		//console.log(result100)
+
+		/*==============Стрелочные функции================*/
+		let func = () => {
+			let num1 = +prompt('Введите первое число');
+			let num2 = +prompt('Введите второе число');
+			return num1 * num2
+		}
+		let resultFunc = func();
+		console.log(resultFunc);
+	</script>
+
+<body>
+
+</body>
+
+</html>

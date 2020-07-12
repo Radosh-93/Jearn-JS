@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>switch</title>
+	<script>
+		let killEnemies = Number(prompt("Сколько Вы убили врагов?"));
+		let points = null;
+		function inform() {
+			switch (killEnemies) {
+				case 1:
+					points = 100;
+					break;
+				case 3:
+					points = 400;
+					break;
+				case 5:
+					points = 700;
+					break;
+				case 10:
+					points = 1000;
+					break;
+				default:
+					points = killEnemies * 100;
+					break;
+			}
+			alert('Ты заработал ' + points + ' очков опыта');
+		}
+		inform();
+	</script>
+</head>
+
+<body>
+
+</body>
+
+</html>

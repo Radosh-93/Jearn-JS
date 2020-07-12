@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Замыкание</title>
+</head>
+
+<body>
+	<script>
+		function calc(num1) {
+			return (num2) => num1 + num2;
+		}
+		const plus = calc(5);
+		console.log(plus(10));
+		console.log(plus(45));
+	</script>
+</body>
+
+</html>

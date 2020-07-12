@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>DOM-elements. Part 2</title>
+	<style>
+		.red-btn {
+			background: red;
+			height: 100px;
+			width: 250px;
+			font-size: 16px;
+			color: white;
+		}
+	</style>
+</head>
+
+<body>
+	<button id="btnRed" class="red-btn">Большая красная кнопка</button>
+	<script>
+		let btnRed = document.getElementById('btnRed');
+		console.dir(btnRed);
+		btnRed.addEventListener('click', () => alert("На меня нажали ЛКМ"));
+		btnRed.addEventListener('contextmenu', () => alert("На меня нажали ПКМ"));
+	</script>
+</body>
+
+</html>

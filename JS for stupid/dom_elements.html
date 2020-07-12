@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>DOM-Elements</title>
+
+</head>
+
+<body>
+	<p id="text">Я текст, над которым издеваются</p>
+	<button id="btnRed">Покрасить текст в красный</button>
+	<button id="btnGreen">Покрасить текст в зеленый</button>
+	<button id="btnYellow">Покрасить текст в желтый</button>
+	<script>
+		const TEXT_ID = 'text';
+		const BTN_RED = 'btnRed';
+		const BTN_GREEN = 'btnGreen';
+		const BTN_YELLOW = 'btnYellow'
+		const COLOR_RED = 'red';
+		const COLOR_GREEN = 'green';
+		const COLOR_YELLOW = 'yellow';
+
+		let text = getElement(TEXT_ID);
+		let btnRed = getElement(BTN_RED);
+		let btnGreen = getElement(BTN_GREEN);
+		let btnYellow = getElement(BTN_YELLOW)
+		function getElement(idElement) {
+			return document.getElementById(idElement);
+		}
+		function setTextColor(color) {
+			text.style.color = color;
+			return color;
+		}
+		btnRed.onclick = function () {
+			setTextColor(COLOR_RED);
+			console.log(setTextColor(COLOR_RED))
+		}
+		btnGreen.addEventListener('click', () => {
+			setTextColor(COLOR_GREEN);
+			console.log(setTextColor(COLOR_GREEN));
+		})
+		btnYellow.addEventListener('click', () => {
+			setTextColor(COLOR_YELLOW);
+			console.log(setTextColor(COLOR_YELLOW));
+		})
+	</script>
+</body>
+
+</html>
