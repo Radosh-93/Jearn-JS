@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Shoping List App</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+	<div id="app">
+		<div class="header">
+			<h1>{{ header ? header : 'welcome' }}</h1>
+			<button class="btn btn-primary" v-if="state === 'default'" @click="changeState('edit')">Add Item</button>
+			<button class="btn btn-danger" v-else @click="changeState('default')">Cancel!</button>
+		</div>
+		<div class="add-item-form" v-if="state === 'edit'">
+			<input type="text" v-model="newItem" placeholder="Add an item" @keyup.enter="saveItem">
+			<button class="btn btn-primary" @click="saveItem" :disabled="newItem.length === 0">Save item</button>
+		</div>
+		<p v-if="items.length === 0">Nice job! You've bought all your items</p>
+		<a :href="newItem" target="_blank">Dynamic Link</a>
+		<ul>
+			<li v-for="item in items" class="li-item" :class="[item.purchased ? 'stikeout' : '', 'priority']">{{item.label}}
+			</li>
+		</ul>
+	</div>
+	<script>
+		const shoppingList = new Vue({
+			el: '#app',
+			data: {
+				state: 'default',
+				header: 'Shopping list app',
+				newItem: '',
+				items: [
+					{
+						label: '10 party hats',
+						purchased: false
+					},
+					{
+						label: '2 board game',
+						purchased: true
+					},
+					{
+						label: '20 cups',
+						purchased: false
+					}
+				]
+			},
+			methods: {
+				saveItem: function () {
+					this.items.push({
+						label: this.newItem,
+						purchased: false
+					});
+
+					this.newItem = '';
+				},
+				changeState: function (newState) {
+					this.state = newState;
+
+					this.newItem = '';
+				}
+			}
+		})
+	</script>
+
+</body>
+
+</html>

@@ -40,7 +40,15 @@
 			return num1 * num2
 		}
 		let resultFunc = func();
-		console.log(resultFunc);
+		//console.log(resultFunc);
+
+		var value = 'global';
+
+		function dynamicScope(value) {
+			var value = 'dynamic';
+			return function (value) { return value }
+		}
+		console.log(dynamicScope()());
 	</script>
 
 <body>
