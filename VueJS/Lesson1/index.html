@@ -8,6 +8,39 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<style>
+		body {
+			margin: 20px;
+		}
+
+		h1 {
+			margin-right: 25px;
+		}
+
+		.header {
+			display: flex;
+			align-items: center;
+		}
+
+		li {
+			list-style: none;
+			padding: 3px 0;
+		}
+
+		.strikeout {
+			text-decoration: line-through;
+			color: gray;
+		}
+
+		.priority {
+			color: red;
+		}
+
+		ul {
+			padding: 0;
+			margin: 15px 0;
+		}
+	</style>
 </head>
 
 <body>
@@ -22,11 +55,13 @@
 			<button class="btn btn-primary" @click="saveItem" :disabled="newItem.length === 0">Save item</button>
 		</div>
 		<p v-if="items.length === 0">Nice job! You've bought all your items</p>
-		<a :href="newItem" target="_blank">Dynamic Link</a>
+
 		<ul>
-			<li v-for="item in items" class="li-item" :class="[item.purchased ? 'stikeout' : '', 'priority']">{{item.label}}
+			<li v-for="item in reverseItems" :class="[item.purchased ? 'strikeout' : '', item.priority ? 'priority' : '']"
+				@click="togglePurchased(item)">{{item.label}}
 			</li>
 		</ul>
+		<a :href="newItem" target="_blank">Dynamic Link</a>
 	</div>
 	<script>
 		const shoppingList = new Vue({
@@ -38,17 +73,25 @@
 				items: [
 					{
 						label: '10 party hats',
-						purchased: false
+						purchased: false,
+						priority: false
 					},
 					{
 						label: '2 board game',
-						purchased: true
+						purchased: true,
+						priority: false
 					},
 					{
 						label: '20 cups',
-						purchased: false
+						purchased: false,
+						priority: false
 					}
 				]
+			},
+			computed: {
+				reverseItems() {
+					return this.items.slice(0).reverse();
+				}
 			},
 			methods: {
 				saveItem: function () {
@@ -63,6 +106,9 @@
 					this.state = newState;
 
 					this.newItem = '';
+				},
+				togglePurchased: function (item) {
+					item.purchased = !item.purchased;
 				}
 			}
 		})
