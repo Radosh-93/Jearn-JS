@@ -1,23 +1,28 @@
 <template>
   <div id="app">
-    <HelloWorld/>
+    <MyHeader />
+    <div>
+      <ProductList />
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
+import MyHeader from "./components/Header";
+import ProductList from "./components/ProductList";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
+    MyHeader,
+    ProductList
   }
-}
+};
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
