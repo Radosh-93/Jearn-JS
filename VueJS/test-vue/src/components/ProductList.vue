@@ -1,6 +1,6 @@
 <template>
   <ul>
-    <ProductItem v-for="(item, i) in products" :key="i" :item="item" :index="(i + 1)" />
+    <ProductItem v-for="(item, i) in products" :key="i" :itemX="item" :index="(i + 1)" />
   </ul>
 </template>
 
@@ -22,3 +22,11 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+</style>
