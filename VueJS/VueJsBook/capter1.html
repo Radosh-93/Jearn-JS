@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Vue.js Pet Depot</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+	<div id="app">
+		<p>{{ seconds }} seconds have elapsed since you opened the page.
+		</p>
+
+
+		<p v-if="hours < 12">Good Morning!</p>
+		<p v-if="hours >=12 && hours < 18">Good Afternoon!</p>
+		<p v-if="hours > 18">Good Evening!</p>
+
+		<p v-if="path === '/'">You are on the home page</p>
+		<p v-else>You're on {{ path }}</p>
+
+		<p>The second dog is {{dogs[1]}}</p>
+		<p>All the dogs are {{dogs}}</p>
+
+		<ul>
+			<li v-for="(rent, city) in averageRent">The average rent in {{city.toUpperCase()}} is ${{rent}}</li>
+		</ul>
+		<ul>
+			<li v-for="n in 10">{{n}}</li>
+		</ul>
+
+		<button :disabled="buttonDisabled">Test button</button>
+
+		<label for=""><input v-model="value" type="radio" name="" id="" value="one">One</label>
+		<label for=""><input v-model="value" type="radio" name="" id="" value="two">Two</label>
+		<label for=""><input v-model="value" type="radio" name="" id="" value="three">Three</label>
+
+		<div>
+			<textarea v-model="badge"></textarea>
+			<div class="images">
+				<img :src="url" alt="" v-for="url in badges">
+			</div>
+		</div>
+	</div>
+	<script>
+		let hours = new Date().getHours();
+		console.log(hours)
+		new Vue({
+			el: '#app',
+			data: {
+				hours: new Date().getHours(),
+
+				path: location.pathname,
+
+				dogs: ['Rex', 'Rover', 'Henrietta', 'Alan'],
+
+				averageRent: {
+					london: 1650,
+					paris: 1730,
+					NYC: 3680
+				},
+
+				buttonDisabled: true,
+				seconds: 0,
+				value: 'one',
+				badge: '',
+				badges: ['https://media-exp1.licdn.com/dms/image/C560BAQHMnA03XDdf3w/company-logo_200_200/0?e=2159024400&v=beta&t=C7KMOtnrJwGrMXmgIk2u1B8a7VRfgxMwXng9cdP9kZk', 'https://upload.wikimedia.org/wikipedia/en/4/46/IMG_Academy_Logo.jpg']
+			},
+			created() {
+				setInterval(() => {
+					//this.buttonDisabled = !this.buttonDisabled
+				}, 1000)
+			},
+			computed: {
+				pushToArray() {
+					this.badges.push(this.badge)
+				}
+			},
+			methods: {
+				addToArray() {
+					this.badges.push(this.badge)
+				}
+			}
+		})
+	</script>
+</body>
+
+</html>

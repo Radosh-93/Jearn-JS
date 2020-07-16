@@ -44,7 +44,7 @@
 </head>
 
 <body>
-	<div id="app">
+	<div id="app" v-if="active">
 		<div class="header">
 			<h1>{{ header ? header : 'welcome' }}</h1>
 			<button class="btn btn-primary" v-if="state === 'default'" @click="changeState('edit')">Add Item</button>
@@ -63,10 +63,16 @@
 		</ul>
 		<a :href="newItem" target="_blank">Dynamic Link</a>
 	</div>
+	<div id="calc" v-if="active">
+		<p>x: <input type="text" v-model="inputX"></p>
+		<p>y: <input type="text" v-model="inputY"></p>
+		<p>Result: <span>{{sum}}</span></p>
+	</div>
 	<script>
 		const shoppingList = new Vue({
 			el: '#app',
 			data: {
+				active: true,
 				state: 'default',
 				header: 'Shopping list app',
 				newItem: '',
@@ -112,6 +118,20 @@
 				}
 			}
 		})
+		const calc = new Vue({
+			el: '#calc',
+			data: {
+				active: false,
+				inputX: '',
+				inputY: '',
+			},
+			computed: {
+				sum() {
+					return Number(this.inputX) + Number(this.inputY)
+				}
+			}
+		})
+		console.log(typeof calc.inputX)
 	</script>
 
 </body>
