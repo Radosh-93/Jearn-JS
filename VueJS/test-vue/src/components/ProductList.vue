@@ -1,24 +1,24 @@
 <template>
   <ul>
-    <ProductItem v-for="(item, i) in products" :key="i" :itemX="item" :index="(i + 1)" />
+    <ProductItem v-for="(productItem, i) in products" :key="i" :product="productItem" :index="i" />
   </ul>
 </template>
 
 <script>
 import ProductItem from "./ProductItems";
+import ProductService from "../productService";
+
 export default {
   data() {
     return {
-      products: [
-        { title: "Product A", qty: 1000, cost: 50 },
-        { title: "Product B", qty: 456, cost: 100 },
-        { title: "Product C", qty: 2345, cost: 23 },
-        { title: "Product D", qty: 150, cost: 34 }
-      ]
+      products: []
     };
   },
   components: {
     ProductItem
+  },
+  created() {
+    this.products = ProductService.products;
   }
 };
 </script>
@@ -27,6 +27,9 @@ export default {
 ul {
   display: flex;
   flex-direction: column;
-  justify-content: end;
+  width: 100%;
+  max-width: 400px;
+  padding: 0;
+  margin: 0 25px;
 }
 </style>
