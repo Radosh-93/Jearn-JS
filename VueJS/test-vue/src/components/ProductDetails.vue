@@ -30,7 +30,7 @@ export default {
 
 <style lang="css" scoped>
 .product-details {
-  width: 50%;
+  width: 100%;
   max-width: 400px;
 }
 div.wrapper {
