@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Знакомимся с Vue.js</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="assets/css/app.css">
+</head>
+
+<body>
+	<div id="app">
+		<header>
+			<h1>{{siteName}}</h1>
+		</header>
+		<main>
+			<div class="wrapper">
+				<div class="row product">
+					<div class="col">
+						<figure>
+							<img :src="product.image">
+						</figure>
+					</div>
+					<div class="col col-expand">
+						<h1>{{product.title}}</h1>
+						<p v-html="product.description"></p>
+						<p class="price">{{product.price}}</p>
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+	<script src="js.js"></script>
+</body>
+
+</html>
