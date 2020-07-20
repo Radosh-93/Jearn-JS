@@ -1,4 +1,5 @@
-import Vue from 'vue'
+import Vue from 'vue';
+import _ from 'lodash';
 
 export default new Vue({
 	data: {
@@ -10,8 +11,9 @@ export default new Vue({
 		]
 	},
 	methods: {
-		viewDetails(i) {
-			this.$emit("eventviewDetails", this.products[i]);
+		viewDetails(id) {
+			let productToView = _.find(this.products, { id: id })
+			this.$emit("eventviewDetails", productToView);
 		}
 	}
 })

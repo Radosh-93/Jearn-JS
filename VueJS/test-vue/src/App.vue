@@ -14,9 +14,6 @@ import ProductList from "./components/ProductList";
 import ProductDetails from "./components/ProductDetails";
 
 export default {
-  data() {
-    return {};
-  },
   components: {
     MyHeader,
     ProductList,
