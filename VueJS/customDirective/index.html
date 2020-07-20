@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Welcome to Vue</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+	<div id="app">
+		<div id="mydiv" v-cooldiv:first="90">
+			<span class="first">Here is: </span>
+			<span class="second">My cool directive</span>
+		</div>
+	</div>
+	<script>
+		Vue.directive('cooldiv', {
+			bind: function (el, binding, vnode) {
+				el.style.background = 'cyan';
+				let fontSize = 70;
+
+				if (binding.value) fontSize = binding.value
+
+				if (binding.arg)
+					el.getElementsByClassName(binding.arg)[0].style.fontSize = fontSize + 'px';
+				else
+					el.style.fontSize = fontSize + 'px';
+			}
+		})
+
+		let app = new Vue({
+			el: '#app'
+		})
+	</script>
+	<style>
+		@import url(https://fonts.googleapis.com/css?family=Finger+Paint);
+
+		#mydiv {
+			overflow: hidden;
+			font: 5vw/100vh "Finger Paint";
+			text-align: center;
+		}
+	</style>
+</body>
+
+</html>

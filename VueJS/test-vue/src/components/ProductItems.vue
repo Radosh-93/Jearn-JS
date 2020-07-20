@@ -1,6 +1,6 @@
 <template>
   <li>
-    <h4>{{product.title}} #{{index + 1}}</h4>
+    <h4>{{product.title}} #{{product.id}}</h4>
     <p>{{product.qty}} items for ${{product.cost}}</p>
     <button @click="viewDetailsClicked">View Details</button>
   </li>

@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import _ from 'lodash';
+import _ from 'lodash'
 
 export default new Vue({
 	data: {
@@ -7,13 +7,17 @@ export default new Vue({
 			{ id: 1, title: "Product A", qty: 1000, cost: 50 },
 			{ id: 2, title: "Product B", qty: 456, cost: 100 },
 			{ id: 3, title: "Product C", qty: 2345, cost: 23 },
-			{ id: 4, title: "Product D", qty: 150, cost: 34 }
+			{ id: 10, title: "Product D", qty: 150, cost: 34 }
 		]
 	},
 	methods: {
 		viewDetails(id) {
-			let productToView = _.find(this.products, { id: id })
-			this.$emit("eventviewDetails", productToView);
+			let viewToDetails = _.find(this.products, { id: id })
+			this.$emit("eventviewDetails", viewToDetails);
+		},
+		addProductToArray(title, cost, qty) {
+			let id = this.products[this.products.length - 1].id + 1;
+			this.products.push({ id, title, qty, cost })
 		}
 	}
 })
