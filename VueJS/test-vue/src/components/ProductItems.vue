@@ -21,7 +21,7 @@ export default {
     viewDetailsClicked() {
       //this.$emit("eventForList", this.index); // имитировать событие
       //this.getIndex(this.index); // или возвращать функцию
-      ProductService.viewDetails(this.product.id);
+      ProductService.viewDetails(this.product.id); // или из внешнего файла
     }
   }
 };
