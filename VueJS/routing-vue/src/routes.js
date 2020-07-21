@@ -5,7 +5,8 @@ import ProductAdd from "./components/AddProduct";
 export const routes = [
 	{
 		path: '/',
-		component: ProductList
+		component: ProductList,
+		name: 'home'
 	},
 	{
 		path: '/add',
@@ -13,7 +14,8 @@ export const routes = [
 	},
 	{
 		path: '/detail/:id/',
-		component: ProductDetails
+		component: ProductDetails,
+		name: 'product-details'
 	},
 	{
 		path: '*',

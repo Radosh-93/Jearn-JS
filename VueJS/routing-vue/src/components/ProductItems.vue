@@ -2,7 +2,7 @@
   <li>
     <h4>{{product.title}} #{{product.id}}</h4>
     <p>{{product.qty}} items for ${{product.cost}}</p>
-    <button @click="viewDetailsClicked">View Details</button>
+    <button class="btn btn-primary" @click="viewDetailsClicked">View Details</button>
   </li>
 </template>
 
@@ -21,7 +21,8 @@ export default {
     viewDetailsClicked() {
       //this.$emit("eventForList", this.index); // имитировать событие
       //this.getIndex(this.index); // или возвращать функцию
-      ProductService.viewDetails(this.product.id);
+      //ProductService.viewDetails(this.product.id);
+      this.$router.push("/detail/" + this.product.id);
     }
   }
 };

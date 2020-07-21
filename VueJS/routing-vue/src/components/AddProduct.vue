@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="form-add">
     <form>
       <label for="title">Title</label>
       <input type="text" id="title" placeholder="Enter title" v-model="product.title" />
@@ -7,7 +7,7 @@
       <input type="number" id="price" placeholder="Enter price" v-model="product.cost" />
       <label for="qty">Quantity</label>
       <input type="number" id="qty" placeholder="Enter quantity" v-model="product.qty" />
-      <button @click.prevent="addProduct">Submit</button>
+      <button class="btn btn-primary" @click.prevent="addProduct">Submit</button>
       <span v-if="validation">Enter valid title or price</span>
     </form>
   </div>
@@ -35,7 +35,8 @@ export default {
           this.product.qty
         );
         this.clearInput();
-        console.log("if ddd");
+        this.$router.push("/");
+        //this.$router.go(-1) //переход по истории(на 1 шаг назад)
       } else {
         this.validation = true;
       }
@@ -51,6 +52,11 @@ export default {
 </script>
 
 <style lang="css">
+div.form-add {
+  width: 100%;
+  display: grid;
+  grid-template: 1fr;
+}
 form {
   display: flex;
   flex-direction: column;
@@ -58,6 +64,10 @@ form {
   padding: 10px;
   border: 1px solid green;
   border-radius: 10px;
+  width: 100%;
+  max-width: 510px;
+  align-self: center;
+  justify-self: center;
 }
 form label {
   font-weight: 700;
@@ -66,6 +76,6 @@ form input {
   margin: 5px 0;
 }
 form button {
-  max-width: 70px;
+  max-width: 90px;
 }
 </style>

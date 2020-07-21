@@ -1,9 +1,12 @@
 <template>
   <div id="app">
     <MyHeader>
+      <router-link :to="{name: 'home'}" class="logo">R</router-link>
       <h1>Routing in Vue.js</h1>
     </MyHeader>
-    <div class="container"></div>
+    <div class="container">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 

@@ -1,7 +1,10 @@
 <template>
-  <ul>
-    <ProductItem v-for="(productItem, i) in products" :key="i" :product="productItem" :index="i" />
-  </ul>
+  <div class="product-list">
+    <router-link to="/add" class="btn btn-success">Add Product</router-link>
+    <ul class="list">
+      <ProductItem v-for="(productItem, i) in products" :key="i" :product="productItem" :index="i" />
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -23,13 +26,19 @@ export default {
 };
 </script>
 
-<style scoped>
-ul {
+<style lang="css">
+div.product-list {
+  width: 100%;
+}
+ul.list {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 400px;
+  max-width: 510px;
   padding: 0;
-  margin: 0 25px;
+  margin: 10px auto;
+}
+btn-success {
+  max-width: 70px;
 }
 </style>

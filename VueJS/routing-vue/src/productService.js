@@ -12,12 +12,16 @@ export default new Vue({
 	},
 	methods: {
 		viewDetails(id) {
-			let viewToDetails = _.find(this.products, { id: id })
-			this.$emit("eventviewDetails", viewToDetails);
+			let viewToDetails = _.find(this.products, { id: parseInt(id) })
+			let indexProd = this.products.indexOf(viewToDetails)
+			this.$emit("eventviewDetails", viewToDetails, indexProd);
 		},
 		addProductToArray(title, cost, qty) {
 			let id = this.products[this.products.length - 1].id + 1;
 			this.products.push({ id, title, qty, cost })
+		},
+		productIndex() {
+
 		}
 	}
 })
