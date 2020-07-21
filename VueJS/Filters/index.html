@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Filters in Vue.js</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+	<div id="app">
+		<h1>{{text | reverse('*') | toUppercase}}</h1>
+	</div>
+	<script>
+		Vue.filter('toUppercase', (value) => { return value.toUpperCase() })
+
+		let app = new Vue({
+			el: '#app',
+			data: {
+				text: 'I am ready to be filtered'
+			},
+			filters: {
+				"reverse": function (value, joinSymbol = "") {
+					return value.split("").reverse().join(joinSymbol)
+				}
+			}
+		})
+	</script>
+</body>
+
+</html>

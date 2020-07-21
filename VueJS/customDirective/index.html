@@ -10,28 +10,36 @@
 
 <body>
 	<div id="app">
-		<div id="mydiv" v-cooldiv:first="90">
+		<div id="mydiv" v-cooldiv:first.shadow="90">
 			<span class="first">Here is: </span>
 			<span class="second">My cool directive</span>
 		</div>
 	</div>
 	<script>
-		Vue.directive('cooldiv', {
-			bind: function (el, binding, vnode) {
-				el.style.background = 'cyan';
-				let fontSize = 70;
+		Vue.directive('cooldiv', { //глобальная директива
 
-				if (binding.value) fontSize = binding.value
-
-				if (binding.arg)
-					el.getElementsByClassName(binding.arg)[0].style.fontSize = fontSize + 'px';
-				else
-					el.style.fontSize = fontSize + 'px';
-			}
 		})
 
 		let app = new Vue({
-			el: '#app'
+			el: '#app',
+			directives: {
+				"cooldiv": {
+					bind: function (el, binding, vnode) {
+						el.style.background = 'cyan';
+						let fontSize = 70;
+
+						if (binding.value) fontSize = binding.value
+
+						if (binding.arg)
+							el.getElementsByClassName(binding.arg)[0].style.fontSize = fontSize + 'px';
+						else
+							el.style.fontSize = fontSize + 'px';
+
+						if (binding.modifiers['shadow'])
+							el.style.textShadow = "5px 7px 5px rgba(0,0,0,.3)"
+					}
+				}
+			}
 		})
 	</script>
 	<style>
