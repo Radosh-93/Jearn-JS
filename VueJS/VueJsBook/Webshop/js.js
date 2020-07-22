@@ -8,9 +8,39 @@ let webstore = new Vue({
 			title: 'Cat Food 25lb bag',
 			description: 'A 25 pound bag of <em>irresistible</em>' + ' organic goodness for your cat.',
 			price: 2000,
-			image: 'assets/images/product-fullsize.png'
+			image: 'assets/images/product-fullsize.png',
+			avalibleInventory: 10,
+		},
+		order: {
+			firstName: '',
+			lastName: '',
+			address: '',
+			city: '',
+			zip: '',
+			state: '',
+			method: 'Home Address',
+			business: 'Business Address',
+			home: 'Home Address',
+			gift: 'Send As A Gift',
+			sendGift: 'Send As A Gift',
+			dontSendGift: 'Do Not Send A Gift'
 		},
 		cart: [],
+		showProduct: true,
+		states: {
+			AL: 'Alabama',
+			AR: 'Arisona',
+			CA: 'California',
+			NV: 'Nevada'
+		}
+	},
+	computed: {
+		cartItemCount() {
+			return this.cart.length || ''
+		},
+		canAddToCart() {
+			return this.product.avalibleInventory === this.cartItemCount;
+		}
 	},
 	filters: {
 		formatPrice(price) {
@@ -32,6 +62,12 @@ let webstore = new Vue({
 	methods: {
 		addToCart() {
 			this.cart.push(this.product.id);
+		},
+		showCheckout() {
+			this.showProduct = this.showProduct ? false : true
+		},
+		submitForm() {
+			alert('Submited')
 		}
 	},
 

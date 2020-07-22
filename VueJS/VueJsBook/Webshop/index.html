@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Знакомимся с Vue.js</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="assets/css/app.css">
+</head>
+
+<body>
+	<div id="app">
+		<header>
+			<div class="wrapper">
+				<div class="header">
+					<div class="navbar navbar-light">
+						<h1>{{siteName}}</h1>
+					</div>
+					<div class="navbar-right cart">
+						<button class="btn btn-outline-secondary btn-lg" @click="showCheckout">{{cartItemCount}}
+							<span>Checkout</span></button>
+					</div>
+				</div>
+			</div>
+		</header>
+		<main>
+			<div class="wrapper">
+				<div>
+					<div class="row product" v-if="showProduct">
+						<div class="col">
+							<figure>
+								<img :src="product.image">
+							</figure>
+						</div>
+						<div class="col col-expand">
+							<h1>{{product.title}}</h1>
+							<p v-html="product.description"></p>
+							<p class="price">{{product.price | formatPrice}}</p>
+							<button class="btn btn-primary" @click="addToCart" :disabled="canAddToCart">Add to cart</button>
+							<span class="inventory-message" v-if="product.avalibleInventory - cartItemCount == 0"> All Out!</span>
+							<span class="inventory-message" v-else-if="product.avalibleInventory - cartItemCount < 5"> Only
+								{{product.avalibleInventory - cartItemCount}} left!</span>
+							<span class="inventory-message green" v-else> Buy Now!</span>
+						</div>
+					</div>
+					<div v-else class="checkout_form">
+						<h2>Enter Your Information</h2>
+						<div class="form_info">
+							<div class="col-md-6">
+								<strong>First name:</strong>
+								<input class="form-control" v-model.trim.lazy="order.firstName">
+							</div>
+							<div class="col-md-6">
+								<strong>Last name:</strong>
+								<input class="form-control" v-model.trim="order.lastName">
+							</div>
+							<div class="form-group">
+								<div class="col-md-12"><strong>Address:</strong></div>
+								<div class="col-md-12"><input class="form-control" v-model.trim="order.address"></div>
+							</div>
+							<div class="form-group">
+								<div class="col-md-12"><strong>City:</strong></div>
+								<div class="col-md-12"><input class="form-control" v-model.trim="order.city"></div>
+							</div>
+							<div class="form-group col-md-2">
+								<strong>State:</strong>
+								<select class="form-control" v-model="order.state">
+									<option disabled value="">State</option>
+									<option v-for="(state, key) in states" :value="state">{{key}}</option>
+								</select>
+							</div>
+							<div class="form-group col-md-6 col-md-offset-4">
+								<strong>Zip / Postal Code:</strong>
+								<input class="form-control" v-model.number="order.zip">
+							</div>
+							<div class="col-md-6 boxes">
+								<input type="checkbox" id="gift" value="true" v-model="order.gift" :true-value="order.sendGift"
+									:false-value="order.dontSendGift">
+								<label for="gift">Ship As Gift?</label>
+							</div>
+							<div class="col-md-6 boxes">
+								<input type="radio" id="home" :value="order.home" v-model="order.method">
+								<label for="home">Home</label>
+								<input type="radio" id="business" :value="order.business" v-model="order.method">
+								<label for="business">Business</label>
+							</div>
+							<div class="col-md-6 button-sub">
+								<button class="btn btn-primary" type="submit" @click="submitForm">Place Order</button>
+							</div>
+							<div class="col-md-12 verify">
+								<pre>
+								First name: {{order.firstName}}
+								 Last name: {{order.lastName}}
+								   Address: {{order.address}}
+								      City: {{order.city}}
+								       Zip: {{order.zip}}
+								     State: {{order.state}}
+								    Method: {{order.method}}
+								      Gift: {{order.gift}}
+								</pre>
+							</div>
+
+						</div>
+					</div>
+				</div>
+		</main>
+	</div>
+	<script src="js.js"></script>
+</body>
+
+</html>
