@@ -5,6 +5,14 @@
 }
 header {
 	background-color: aquamarine;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 5;
+}
+main {
+	margin-top: 92px;
 }
 .header {
 	display: grid;
@@ -26,6 +34,9 @@ header {
 }
 .product {
 	margin-top: 40px;
+}
+.product .col img {
+	max-width: 300px;
 }
 .checkout_form {
 	margin: 40px 0;
@@ -55,8 +66,21 @@ header {
 }
 .inventory-message {
 	color: indianred;
-	margin-left: 5px;
+	margin: 0 50px 0 10px;
 }
 .inventory-message.green {
 	color: green;
+}
+
+.action-block {
+	display: flex;
+	align-items: center;
+}
+.rating {
+	position: relative;
+
+}
+.rating-active::before {
+	position: absolute;
+	content: '\2605';
 }

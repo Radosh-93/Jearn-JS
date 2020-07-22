@@ -9,6 +9,9 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link rel="stylesheet" href="assets/css/app.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"
+		integrity="sha512-VZ6m0F78+yo3sbu48gElK4irv2dzPoep8oo9LEjxviigcnnnNvnTOJRSrIhuFk68FMLOpiNz+T77nNY89rnWDg=="
+		crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -29,21 +32,31 @@
 		<main>
 			<div class="wrapper">
 				<div>
-					<div class="row product" v-if="showProduct">
-						<div class="col">
-							<figure>
-								<img :src="product.image">
-							</figure>
-						</div>
-						<div class="col col-expand">
-							<h1>{{product.title}}</h1>
-							<p v-html="product.description"></p>
-							<p class="price">{{product.price | formatPrice}}</p>
-							<button class="btn btn-primary" @click="addToCart" :disabled="canAddToCart">Add to cart</button>
-							<span class="inventory-message" v-if="product.avalibleInventory - cartItemCount == 0"> All Out!</span>
-							<span class="inventory-message" v-else-if="product.avalibleInventory - cartItemCount < 5"> Only
-								{{product.avalibleInventory - cartItemCount}} left!</span>
-							<span class="inventory-message green" v-else> Buy Now!</span>
+					<div v-if="showProduct">
+						<div class="row product" v-for="product in products">
+							<div class="col">
+								<figure>
+									<img :src="product.image">
+								</figure>
+							</div>
+							<div class="col col-expand">
+								<h1>{{product.title}}</h1>
+								<p v-html="product.description"></p>
+								<p class="price">{{product.price | formatPrice}}</p>
+								<div class="action-block">
+									<button class="btn btn-primary" @click="addToCart(product)" :disabled="canAddToCart(product)">Add to
+										cart</button>
+									<span class="inventory-message" v-if="product.availableInventory - cartCount(product.id) == 0"> All
+										Out!</span>
+									<span class="inventory-message" v-else-if="product.availableInventory - cartCount(product.id) < 5">
+										Only
+										{{product.availableInventory - cartCount(product.id)}} left!</span>
+									<span class="inventory-message green" v-else> Buy Now!</span>
+									<div class="rating">
+										<span :class="{'rating-active': checkRating(n, product)}" v-for="n in 5">☆</span>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div v-else class="checkout_form">

@@ -3,14 +3,7 @@ let webstore = new Vue({
 	el: '#app',
 	data: {
 		siteName: 'Vue.js Pet Depot',
-		product: {
-			id: 1001,
-			title: 'Cat Food 25lb bag',
-			description: 'A 25 pound bag of <em>irresistible</em>' + ' organic goodness for your cat.',
-			price: 2000,
-			image: 'assets/images/product-fullsize.png',
-			avalibleInventory: 10,
-		},
+		products: [],
 		order: {
 			firstName: '',
 			lastName: '',
@@ -38,9 +31,7 @@ let webstore = new Vue({
 		cartItemCount() {
 			return this.cart.length || ''
 		},
-		canAddToCart() {
-			return this.product.avalibleInventory === this.cartItemCount;
-		}
+
 	},
 	filters: {
 		formatPrice(price) {
@@ -60,39 +51,37 @@ let webstore = new Vue({
 		}
 	},
 	methods: {
-		addToCart() {
-			this.cart.push(this.product.id);
+		addToCart(aProduct) {
+			this.cart.push(aProduct.id);
 		},
 		showCheckout() {
 			this.showProduct = this.showProduct ? false : true
 		},
 		submitForm() {
 			alert('Submited')
+		},
+		checkRating(n, myProduct) {
+			return myProduct.rating - n >= 0
+		},
+		canAddToCart(aProduct) {
+			return aProduct.availableInventory === this.cartCount(aProduct.id);
+		},
+		cartCount(id) {
+			let count = 0;
+			for (let i = 0; i < this.cart.length; i++) {
+				if (this.cart[i] === id) {
+					count++;
+				}
+			}
+			return count
 		}
 	},
 
-	beforeCreate() {
-		if (APP_LOG_LIFECYCLE_EVENTS) console.log('beaforeCreate')
-	},
 	created() {
-		if (APP_LOG_LIFECYCLE_EVENTS) console.log('created')
+		axios.get('./products.json').then((response) => {
+			this.products = response.data.products;
+			console.log(this.products)
+		})
 	},
-	beforeMount() {
-		if (APP_LOG_LIFECYCLE_EVENTS) console.log('beaforeMount')
-	},
-	mounted() {
-		if (APP_LOG_LIFECYCLE_EVENTS) console.log('mounted')
-	},
-	beforeUpdate() {
-		if (APP_LOG_LIFECYCLE_EVENTS) console.log('beaforeUpdated')
-	},
-	updated() {
-		if (APP_LOG_LIFECYCLE_EVENTS) console.log('updated')
-	},
-	beforeDestroy() {
-		if (APP_LOG_LIFECYCLE_EVENTS) console.log('beaforeDestoy')
-	},
-	destroyed() {
-		if (APP_LOG_LIFECYCLE_EVENTS) console.log('destroyed')
-	},
+
 })
