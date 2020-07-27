@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+	<div id="app">
+		<form-component :title="titleLable" :author="authorLable">
+			<h1>{{header}}</h1>
+			<label for="title" slot="titleSlot">{{titleLable}}</label>
+			<label for="author" slot="authorSlot">{{authorLable}}</label>
+		</form-component>
+	</div>
+</body>
+<script>
+	const formComponent = {
+		template: `
+
+		<form>
+			<slot></slot>
+			<slot name="titleSlot"></slot>
+			<input id="title" type="text" /></br>
+			<slot name="authorSlot"></slot>
+			<input id="author" type="text" /></br>
+			<button>Submit</button>
+		</form>
+		
+		`,
+		props: [],
+		data() {
+			return {
+
+			}
+		},
+
+	}
+	new Vue({
+		el: '#app',
+		components: { 'form-component': formComponent },
+		data() {
+			return {
+				titleLable: 'The Title:',
+				authorLable: 'The Author:',
+				header: 'Book Author Form'
+			}
+		},
+	})
+</script>
+
+</html>
