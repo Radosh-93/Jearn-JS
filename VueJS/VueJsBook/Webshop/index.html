@@ -33,6 +33,7 @@
 			<div class="wrapper">
 				<div>
 					<div v-if="showProduct">
+						<button @click="sortedProducts">Sort</button>
 						<div class="row product" v-for="product in products">
 							<div class="col">
 								<figure>
