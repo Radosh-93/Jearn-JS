@@ -53,7 +53,8 @@
 
 <script>
 import MyHeader from "./Header";
-import axios from "axios";
+// import axios from "axios";
+import { mapGetters } from "vuex";
 
 export default {
 	components: {
@@ -62,16 +63,15 @@ export default {
 	data() {
 		return {
 			showProduct: true,
-			products: [],
 			cart: [],
-			component: 'MyHeader'
-			
+			component: "MyHeader",
 		};
 	},
 	computed: {
 		cartItemCount() {
 			return this.cart.length || "";
 		},
+		...mapGetters(["products"]),
 	},
 	methods: {
 		addToCart(aProduct) {
@@ -126,9 +126,7 @@ export default {
 		},
 	},
 	created() {
-		axios.get("/static/products.json").then((response) => {
-			this.products = response.data.products;
-		});
+		this.$store.dispatch("initStore");
 	},
 };
 </script>
