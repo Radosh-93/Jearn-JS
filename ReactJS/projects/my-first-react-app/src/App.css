@@ -1,38 +1,77 @@
-.App {
-  text-align: center;
+li {
+  list-style: none;
+}
+ul {
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app-wrapper {
+  display: grid;
+
+  grid-template-areas: 
+  "header header"
+  "nav content";
+  grid-template-rows: 60px 1fr;
+  grid-template-columns: 2fr 10fr;
+  grid-gap: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header {
+  grid-area: header;
+  background-color: green;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+.header img {
+  height: 100%;
+}
+.nav {
+  grid-area: nav;
+  background-color: aquamarine;
 }
 
-.App-link {
-  color: #61dafb;
+.content {
+  grid-area: content;
+  background-color: cadetblue;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.wallpaper {
+  height: 200px;
+  overflow: hidden;
+}
+
+.wallpaper img {
+  width: 100%;
+}
+
+.profile-information {
+  padding: 15px;
+  display: grid;
+  grid-gap: 40px;
+  grid-template-columns: 120px 1fr;
+}
+
+.profile-information img{
+  width: 100%;
+}
+.about-profile span{
+  display: block;
+}
+.posts {
+  padding: 0 25px;
+}
+textarea {
+  width: calc(100% - 20px);
+}
+.users-posts {
+  display: flex;
+  margin: 20px 0;
+}
+
+.users-posts .icon {
+  width: 50px;
+  height: 50px;
+  background-color: darkgoldenrod;
+  border-radius: 50%;
+  margin-right: 25px;
 }
