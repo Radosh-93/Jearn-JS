@@ -1,3 +1,7 @@
+ul {
+  margin: 0;
+}
+
 .app-wrapper {
   display: grid;
 
@@ -5,7 +9,7 @@
   "header header"
   "nav content";
   grid-template-rows: 60px 1fr;
-  grid-template-columns: 2fr 10fr;
+  grid-template-columns: 150px 1fr;
   grid-gap: 10px;
 }
 

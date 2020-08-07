@@ -2,7 +2,7 @@ li {
   list-style: none;
 }
 ul {
-  margin: 20px 0 0 15px;
+  margin: 0;
   padding: 0;
 }
 
@@ -10,13 +10,27 @@ ul {
   grid-area: nav;
   background-color: #08583d;
 }
+.nav ul {
+  margin: 20px 0 0 15px;
+  padding: 0;
+}
+
 .nav ul li a {
 	color: #ffffff;
 	text-decoration: none;
 	display: inline-block;
-	padding-bottom: 10px;
+  padding-bottom: 10px;
+  transition: color .3s ease-in-out;
+}
+.nav ul li:last-child {
+  padding-top: 20px;
 }
 
-.nav ul li a.item.active {
+.nav ul li a:hover {
+  color: #ffe86f;
+}
+
+.nav ul li a.active {
   color: gold;
+  
 }
