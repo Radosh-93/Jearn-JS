@@ -2,7 +2,14 @@ import React from 'react'
 import s from './MyPosts.module.css'
 import Post from './Post/Post';
 
-const MyPosts = () => {
+
+
+const MyPosts = (props) => {
+
+	let postsElements = props.postsData.map(
+		(el, i) => <Post msg={el.content} likesCount={el.likesCount} key={i} />
+	)
+
 	return (
 		<div className={s.posts}>
 			<h3>My posts</h3>
@@ -10,10 +17,7 @@ const MyPosts = () => {
 				<textarea placeholder="your news..."></textarea>
 				<button>Send</button>
 			</form>
-			<Post msg='Hey, why nobody love me?' likesCount='15' />
-			<Post msg='Wow, I still learn React!' likesCount='8' />
-			<Post msg='Some text in the post...' likesCount='3' />
-
+			{postsElements}
 		</div>
 	)
 }

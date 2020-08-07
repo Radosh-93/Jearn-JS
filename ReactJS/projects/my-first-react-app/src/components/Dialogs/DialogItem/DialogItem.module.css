@@ -1,0 +1,11 @@
+.user_name {
+	padding: 5px 0;
+	color: black;
+}
+.user_name a {
+	color: inherit;
+	text-decoration: none;
+}
+.user_name a.active {
+	color: wheat;
+}

@@ -1,0 +1,17 @@
+.message {
+	display: inline-block;
+}
+.message.sended {
+	text-align: end;
+}
+
+.message span {
+	display: inline-block;
+	padding: 5px 10px;
+	margin: 2px 0;
+	background-color: rgba(255, 255, 255,0.5);
+	border-radius: 10px;
+}
+.message.sended span {
+	background-color: rgba(104, 104, 104, 0.5);
+}
