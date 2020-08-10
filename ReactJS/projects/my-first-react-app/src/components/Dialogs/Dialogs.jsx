@@ -12,6 +12,13 @@ const Dialogs = (props) => {
 		(el, i) => (<Messages content={el.content} classMsg={el.classMsg} key={i} />)
 	);
 
+	let newMsgElement = React.createRef();
+
+	let sendMessage = () => {
+		let text = newMsgElement.current.value;
+		alert(text);
+	}
+
 	return (
 		<div className={s.dialogs}>
 			<ul className={s.dialogs_items}>
@@ -19,6 +26,9 @@ const Dialogs = (props) => {
 			</ul>
 			<ul className={s.messages}>
 				{userMessagesElements}
+				<li className={s.input_block} ><textarea className={s.input_field} rows="2" ref={newMsgElement}></textarea>
+					<button onClick={sendMessage}>Send</button>
+				</li>
 			</ul>
 		</div>
 	)

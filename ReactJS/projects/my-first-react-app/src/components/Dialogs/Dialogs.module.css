@@ -4,6 +4,7 @@
 	grid-template-columns: min-content 1fr;
 
 	padding: 15px 15px 15px 0;
+	height: calc(100vh - 100px);
 }
 
 .dialogs_items {
@@ -15,5 +16,20 @@
 	margin-left: 10px;
 	display: grid;
 	grid-template: 1fr / 1fr;
+
+}
+.input_block {
+	margin-top: 25px;
+	display: flex;
+	align-items: center;
+}
+
+.input_field {
+	width: 100%;
+	padding: 10px;
+	resize: none;
+	outline: none;
+	border-radius: 10px;
+	max-height: 150px;
 
 }

@@ -1,6 +1,6 @@
 .posts {
   padding: 0 25px;
 }
-textarea {
+.post_input {
   width: calc(100% - 20px);
 }
