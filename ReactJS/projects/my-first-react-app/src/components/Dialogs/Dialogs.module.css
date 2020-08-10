@@ -1,9 +1,9 @@
 .dialogs {
 	display: grid;
 
-	grid-template-columns: 120px 1fr;
+	grid-template-columns: min-content 1fr;
 
-	padding: 15px;
+	padding: 15px 15px 15px 0;
 }
 
 .dialogs_items {

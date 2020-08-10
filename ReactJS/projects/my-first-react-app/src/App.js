@@ -15,7 +15,7 @@ const App = (props) => {
     <BrowserRouter>
       <div className="app-wrapper">
         <Header />
-        <Navigation />
+        <Navigation userInfo={props.state.usersData} />
         <main className='content'>
           {/* <Route path='/dialogs' component={Dialogs} /> */}
           <Route path='/dialogs'

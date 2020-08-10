@@ -1,6 +1,10 @@
 ul {
   margin: 0;
 }
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
 .app-wrapper {
   display: grid;
@@ -9,7 +13,7 @@ ul {
   "header header"
   "nav content";
   grid-template-rows: 60px 1fr;
-  grid-template-columns: 150px 1fr;
+  grid-template-columns: 180px 1fr;
   grid-gap: 10px;
 }
 
