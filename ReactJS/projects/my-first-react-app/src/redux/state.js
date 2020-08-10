@@ -1,3 +1,5 @@
+import { rerenderEntireTree } from "../render";
+
 let state = {
 	profilePage: {
 		postsData: [
@@ -25,8 +27,12 @@ let state = {
 		{ id: 5, name: 'Valery', img: 'https://i.pinimg.com/736x/3b/0d/cb/3b0dcbe0358e163382d99d8fe4440306.jpg' },
 		{ id: 6, name: 'Alina', img: 'https://pm1.narvii.com/7022/b27d2a21719f0471e034271f26e54e025a8d2a03r1-530-663v2_uhq.jpg' }
 	],
+}
 
-
+export let addPost = (postMsg) => {
+	let post = { id: 5, content: postMsg, likesCount: 0 }
+	state.profilePage.postsData.push(post);
+	rerenderEntireTree(state);
 }
 
 export default state;

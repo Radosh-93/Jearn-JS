@@ -13,16 +13,17 @@ const MyPosts = (props) => {
 
 	let addPost = () => {
 		let text = newPostElement.current.value;
-		alert(text);
+		props.addPost(text);
+		newPostElement.current.value = '';
 	}
 
 	return (
 		<div className={s.posts}>
 			<h3>My posts</h3>
-			<form id="form">
-				<textarea className={s.post_input} ref={newPostElement} placeholder="your news..."></textarea>
+			<div id="form">
+				<textarea className={s.post_input} ref={newPostElement} placeholder="your news..." />
 				<button onClick={addPost}>Add post</button>
-			</form>
+			</div>
 			{postsElements}
 		</div>
 	)
