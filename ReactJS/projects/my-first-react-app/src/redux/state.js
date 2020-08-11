@@ -18,7 +18,8 @@ let state = {
 			{ id: 3, content: "How are you?", classMsg: 'sended' },
 			{ id: 4, content: "Yo", classMsg: 'recived' },
 			{ id: 5, content: "Fine", classMsg: 'recived' },
-		]
+		],
+		newMessage: ''
 	},
 	usersData: [
 		{ id: 1, name: 'Dimych', img: 'https://www.meme-arsenal.com/memes/d7a0ccde363c86b4b25457671e0a052b.jpg' },
@@ -40,4 +41,16 @@ export let updateNewPostText = (newText) => {
 	state.profilePage.newPostText = newText;
 	rerenderEntireTree(state);
 }
+
+export let sendMessage = () => {
+	let msg = { id: 6, content: state.dialogsPage.newMessage, classMsg: 'sended' };
+	state.dialogsPage.messagesData.push(msg);
+	state.dialogsPage.newMessage = '';
+	rerenderEntireTree(state);
+}
+export let updateNewMesageText = (newText) => {
+	state.dialogsPage.newMessage = newText;
+	rerenderEntireTree(state);
+}
+
 export default state;

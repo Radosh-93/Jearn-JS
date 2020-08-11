@@ -4,7 +4,6 @@ import DialogItem from './DialogItem/DialogItem'
 import Messages from './Messages/Messages'
 
 const Dialogs = (props) => {
-
 	let usersElenents = props.state.usersData.map(
 		(el, i) => (<DialogItem userName={el.name} id={el.id} key={i} img={el.img} />)
 	);
@@ -14,9 +13,12 @@ const Dialogs = (props) => {
 
 	let newMsgElement = React.createRef();
 
-	let sendMessage = () => {
+	let onChangeMessage = () => {
 		let text = newMsgElement.current.value;
-		alert(text);
+		props.updateNewMesageText(text);
+	}
+	let sendMessage = () => {
+		props.sendMessage();
 	}
 
 	return (
@@ -26,7 +28,12 @@ const Dialogs = (props) => {
 			</ul>
 			<ul className={s.messages}>
 				{userMessagesElements}
-				<li className={s.input_block} ><textarea className={s.input_field} rows="2" ref={newMsgElement}></textarea>
+				<li className={s.input_block} >
+					<textarea className={s.input_field}
+						onChange={onChangeMessage}
+						rows="2"
+						ref={newMsgElement}
+						value={props.state.dialogsPage.newMessage} />
 					<button onClick={sendMessage}>Send</button>
 				</li>
 			</ul>
