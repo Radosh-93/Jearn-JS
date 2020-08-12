@@ -1,3 +1,8 @@
+const ADD_POST = 'ADD-POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const SEND_MESSAGE = 'SEND-MESSAGE';
+const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
+
 let store = {
 	_state: {
 		profilePage: {
@@ -32,33 +37,47 @@ let store = {
 	_callSubscriber() {
 		console.log('State changed')
 	},
+
 	getState() {
 		return this._state
 	},
-	addPost() {
-		debugger;
-		let post = { id: 5, content: this._state.profilePage.newPostText, likesCount: 0 }
-		this._state.profilePage.postsData.push(post);
-		this._state.profilePage.newPostText = '';
-		this._callSubscriber(this._state);
-	},
-	updateNewPostText(newText) {
-		this._state.profilePage.newPostText = newText;
-		this._callSubscriber(this._state);
-	},
-	sendMessage() {
-		let msg = { id: 6, content: this._state.dialogsPage.newMessage, classMsg: 'sended' };
-		this._state.dialogsPage.messagesData.push(msg);
-		this._state.dialogsPage.newMessage = '';
-		this._callSubscriber(this._state);
-	},
-	updateNewMesageText(newText) {
-		this._state.dialogsPage.newMessage = newText;
-		this._callSubscriber(this._state);
-	},
 	subscribe(observer) {
 		this._callSubscriber = observer
+	},
+
+	dispatch(action) { //{ type: 'ADD-POST'}
+		if (action.type === ADD_POST) {
+			let post = { id: 5, content: this._state.profilePage.newPostText, likesCount: 0 }
+			this._state.profilePage.postsData.push(post);
+			this._state.profilePage.newPostText = '';
+			this._callSubscriber(this._state);
+		}
+		else if (action.type === UPDATE_NEW_POST_TEXT) { // {type: 'UPDATE-NEW-POST-TEXT', newText: 'text'}
+			this._state.profilePage.newPostText = action.newText;
+			this._callSubscriber(this._state);
+		}
+		else if (action.type === SEND_MESSAGE) {
+			let msg = { id: 6, content: this._state.dialogsPage.newMessage, classMsg: 'sended' };
+			this._state.dialogsPage.messagesData.push(msg);
+			this._state.dialogsPage.newMessage = '';
+			this._callSubscriber(this._state);
+		}
+		else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
+			this._state.dialogsPage.newMessage = action.newText;
+			this._callSubscriber(this._state);
+		}
 	}
 }
 
+
+export const addPostActionCreator = () => (
+	{ type: ADD_POST }
+)
+export const updateNewPostTextActionCreator = (text) => (
+	{ type: UPDATE_NEW_POST_TEXT, newText: text }
+)
+export const sendMessageActionCreator = () => ({ type: SEND_MESSAGE })
+export const updateNewMessageTextActionCreator = (text) => (
+	{ type: UPDATE_NEW_MESSAGE_TEXT, newText: text }
+)
 export default store;
