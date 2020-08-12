@@ -1,11 +1,10 @@
 import React from 'react';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
-import { updateNewPostTextCreator, addPostCreator } from '../../../redux/state'
+import { updateNewPostTextCreator, addPostCreator } from '../../../redux/profile-reducer'
 
 
 const MyPosts = (props) => {
-
 	let postsElements = props.postsData.map(
 		(el, i) => <Post msg={el.content} likesCount={el.likesCount} key={i} />);
 
@@ -19,6 +18,7 @@ const MyPosts = (props) => {
 		let action = updateNewPostTextCreator(text);
 		props.dispatch(action);
 	}
+
 
 	return (
 		<div className={s.posts}>
