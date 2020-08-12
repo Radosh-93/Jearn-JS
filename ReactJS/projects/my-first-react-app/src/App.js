@@ -7,30 +7,28 @@ import Dialogs from './components/Dialogs/Dialogs';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
-import { Route, BrowserRouter } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 const App = (props) => {
 
   return (
-    <BrowserRouter>
-      <div className="app-wrapper">
-        <Header />
-        <Navigation userInfo={props.state.usersData} />
-        <main className='content'>
-          {/* <Route path='/dialogs' component={Dialogs} /> */}
-          <Route path='/dialogs'
-            render={() => <Dialogs
-              state={props.state} dispatch={props.dispatch} />} />
-          {/* <Route path='/profile' component={Profile} /> */}
-          <Route path='/profile'
-            render={() => <Profile
-              profilePage={props.state.profilePage} dispatch={props.dispatch} />} />
-          <Route path='/feed' component={News} />
-          <Route path='/music' component={Music} />
-          <Route path='/settings' component={Settings} />
-        </main>
-      </div>
-    </BrowserRouter>
+    <div className="app-wrapper">
+      <Header />
+      <Navigation userInfo={props.state.usersData} />
+      <main className='content'>
+        {/* <Route path='/dialogs' component={Dialogs} /> */}
+        <Route path='/dialogs'
+          render={() => <Dialogs
+            state={props.state} dispatch={props.dispatch} />} />
+        {/* <Route path='/profile' component={Profile} /> */}
+        <Route path='/profile'
+          render={() => <Profile
+            profilePage={props.state.profilePage} dispatch={props.dispatch} />} />
+        <Route path='/feed' component={News} />
+        <Route path='/music' component={Music} />
+        <Route path='/settings' component={Settings} />
+      </main>
+    </div>
   );
 }
 

@@ -23,7 +23,7 @@ let store = {
 				{ id: 4, content: "Yo", classMsg: 'recived' },
 				{ id: 5, content: "Fine", classMsg: 'recived' },
 			],
-			newMessage: ''
+			newMessageText: ''
 		},
 		usersData: [
 			{ id: 1, name: 'Dimych', img: 'https://www.meme-arsenal.com/memes/d7a0ccde363c86b4b25457671e0a052b.jpg' },
@@ -57,27 +57,27 @@ let store = {
 			this._callSubscriber(this._state);
 		}
 		else if (action.type === SEND_MESSAGE) {
-			let msg = { id: 6, content: this._state.dialogsPage.newMessage, classMsg: 'sended' };
+			let msg = { id: 6, content: this._state.dialogsPage.newMessageText, classMsg: 'sended' };
 			this._state.dialogsPage.messagesData.push(msg);
-			this._state.dialogsPage.newMessage = '';
+			this._state.dialogsPage.newMessageText = '';
 			this._callSubscriber(this._state);
 		}
 		else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
-			this._state.dialogsPage.newMessage = action.newText;
+			this._state.dialogsPage.newMessageText = action.newText;
 			this._callSubscriber(this._state);
 		}
 	}
 }
 
 
-export const addPostActionCreator = () => (
+export const addPostCreator = () => (
 	{ type: ADD_POST }
 )
-export const updateNewPostTextActionCreator = (text) => (
+export const updateNewPostTextCreator = (text) => (
 	{ type: UPDATE_NEW_POST_TEXT, newText: text }
 )
-export const sendMessageActionCreator = () => ({ type: SEND_MESSAGE })
-export const updateNewMessageTextActionCreator = (text) => (
+export const sendMessageCreator = () => ({ type: SEND_MESSAGE })
+export const updateNewMessageTextCreator = (text) => (
 	{ type: UPDATE_NEW_MESSAGE_TEXT, newText: text }
 )
 export default store;
