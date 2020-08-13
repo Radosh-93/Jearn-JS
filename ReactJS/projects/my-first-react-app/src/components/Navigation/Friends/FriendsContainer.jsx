@@ -2,13 +2,11 @@ import React from 'react'
 import s from './Friends.module.css'
 import { NavLink } from 'react-router-dom';
 import Friends from "./Friends";
+import {connect} from "react-redux";
 
-const FriendsContainer = (props) => {
-	let sideBar = props.store.getState().sideBar;
+let mapStateToProps = (state) => ({
+	sideBar: state.sideBar
+})
 
-	return (
-		<Friends sideBar={sideBar}/>
-	)
-}
-
+const FriendsContainer = connect(mapStateToProps)(Friends)
 export default FriendsContainer

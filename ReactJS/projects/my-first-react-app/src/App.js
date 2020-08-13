@@ -17,8 +17,7 @@ const App = (props) => {
       <main className='content'>
         {/* <Route path='/dialogs' component={Dialogs} /> */}
         <Route path='/dialogs'
-          render={() => <DialogsContainer
-            store={props.store} />} />
+          render={() => <DialogsContainer/>} />
         {/* <Route path='/profile' component={Profile} /> */}
         <Route path='/profile'
           render={() => <Profile store={props.store} />} />
