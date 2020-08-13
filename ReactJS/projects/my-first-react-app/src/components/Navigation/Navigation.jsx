@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import s from './Navigation.module.css'
-import Friends from './Friends/Friends';
+import FriendsContainer from "./Friends/FriendsContainer";
 
 
 const Navigation = (props) => {
@@ -14,7 +14,7 @@ const Navigation = (props) => {
 				<li><NavLink to="/music" activeClassName={s.active}>Music</NavLink></li>
 				<li><NavLink to="/settings" activeClassName={s.active}>Settings</NavLink></li>
 			</ul>
-			<Friends userInfo={props.userInfo} />
+			<FriendsContainer store={props.store} />
 		</nav>
 	)
 }

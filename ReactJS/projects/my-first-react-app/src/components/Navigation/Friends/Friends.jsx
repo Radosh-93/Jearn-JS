@@ -3,7 +3,7 @@ import s from './Friends.module.css'
 import { NavLink } from 'react-router-dom';
 
 const Friends = (props) => {
-	let userItem = props.userInfo.map((el, i) => {
+	let userItem = props.sideBar.usersData.map((el, i) => {
 		if (i < 3) {
 			return (
 				<NavLink to={`/profile/${el.id}`}

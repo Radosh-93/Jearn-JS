@@ -2,34 +2,32 @@ import React from 'react'
 import s from './Dialogs.module.css'
 import DialogItem from './DialogItem/DialogItem'
 import Messages from './Messages/Messages'
-import { updateNewMessageTextCreator, sendMessageCreator } from '../../redux/dialog-reducer'
 
 const Dialogs = (props) => {
+	let newMsgText = props.dialogsPage.newMessageText
 
-	let newMsgText = props.state.dialogsPage.newMessageText;
-
-	let usersElenents = props.state.usersData.map(
+	let usersElements = props.dialogsPage.usersData.map(
 		(el, i) => (<DialogItem userName={el.name} id={el.id} key={i} img={el.img} />)
 	);
-	let userMessagesElements = props.state.dialogsPage.messagesData.map(
+	let userMessagesElements = props.dialogsPage.messagesData.map(
 		(el, i) => (<Messages content={el.content} classMsg={el.classMsg} key={i} />)
 	); //ввваіа
 
 	let sendMessage = () => {
 		if (newMsgText !== '') {
-			props.dispatch(sendMessageCreator())
+			props.sendMessage()
 		}
 	}
 	let onChangeMessage = (e) => {
 		let text = e.target.value;
-		props.dispatch(updateNewMessageTextCreator(text));
+		props.onChangeMessage(text);
 	}
 
 
 	return (
 		<div className={s.dialogs}>
 			<ul className={s.dialogs_items}>
-				{usersElenents}
+				{usersElements}
 			</ul>
 			<ul className={s.messages}>
 				{userMessagesElements}
