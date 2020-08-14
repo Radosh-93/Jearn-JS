@@ -11,35 +11,24 @@ let initialState = {
 		{ id: 6, name: 'Alina', img: 'https://pm1.narvii.com/7022/b27d2a21719f0471e034271f26e54e025a8d2a03r1-530-663v2_uhq.jpg' }
 	],
 	messagesData: [
-		{ id: 1, content: 'hi', classMsg: 'sended' },
-		{ id: 2, content: "It's me", classMsg: 'sended' },
-		{ id: 3, content: "How are you?", classMsg: 'sended' },
-		{ id: 4, content: "Yo", classMsg: 'recived' },
-		{ id: 5, content: "Fine", classMsg: 'recived' },
+		{ id: 1, content: 'hi', classMsg: 'sent' },
+		{ id: 2, content: "It's me", classMsg: 'sent' },
+		{ id: 3, content: "How are you?", classMsg: 'sent' },
+		{ id: 4, content: "Yo", classMsg: 'received' },
+		{ id: 5, content: "Fine", classMsg: 'received' },
 	],
 	newMessageText: ''
 }
 
 const dialogsReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case SEND_MESSAGE: {
-			debugger;
-			let msg = {
-				id: 6,
-				content: state.newMessageText,
-				classMsg: 'sended'
-			};
-			let stateCopy = {...state};
-			stateCopy.messagesData = [...state.messagesData];
-			stateCopy.messagesData.push(msg);
-			stateCopy.newMessageText = '';
-			return stateCopy;
-		}
-		case UPDATE_NEW_MESSAGE_TEXT: {
-			let stateCopy = {...state}
-			stateCopy.newMessageText = action.newText;
-			return stateCopy;
-		}
+		case SEND_MESSAGE:
+			let msg = {id: state.messagesData.length + 1,	content: state.newMessageText,classMsg: 'sent'};
+			return {...state, messagesData: [...state.messagesData, msg], newMessageText: ''} //return stateCopy
+
+		case UPDATE_NEW_MESSAGE_TEXT:
+			return {...state, newMessageText: action.newText} //return stateCopy
+
 		default:
 			return state
 	}

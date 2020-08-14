@@ -7,10 +7,10 @@ const Dialogs = (props) => {
 	let newMsgText = props.dialogsPage.newMessageText
 
 	let usersElements = props.dialogsPage.usersData.map(
-		(el, i) => (<DialogItem userName={el.name} id={el.id} key={i} img={el.img} />)
+		el => (<DialogItem userName={el.name} id={el.id} key={el.id} img={el.img} />)
 	);
 	let userMessagesElements = props.dialogsPage.messagesData.map(
-		(el, i) => (<Messages content={el.content} classMsg={el.classMsg} key={i} />)
+		el => (<Messages content={el.content} classMsg={el.classMsg} key={el.id} />)
 	); //ввваіа
 
 	let sendMessage = () => {
