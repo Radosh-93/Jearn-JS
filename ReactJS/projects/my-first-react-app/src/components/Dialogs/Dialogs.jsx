@@ -2,8 +2,22 @@ import React from 'react'
 import s from './Dialogs.module.css'
 import DialogItem from './DialogItem/DialogItem'
 import Messages from './Messages/Messages'
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import { makeStyles } from '@material-ui/core/styles';
+import SendIcon from '@material-ui/icons/Send';
+
+const useStyles = makeStyles((theme) => ({
+	button: {
+		margin: theme.spacing(1),
+	},
+}));
 
 const Dialogs = (props) => {
+	// Style
+	const classes = useStyles();
+	// Style
+
 	let newMsgText = props.dialogsPage.newMessageText
 
 	let usersElements = props.dialogsPage.usersData.map(
@@ -14,8 +28,10 @@ const Dialogs = (props) => {
 	); //ввваіа
 
 	let sendMessage = () => {
+		let isDisable = true;
 		if (newMsgText !== '') {
-			props.sendMessage()
+			props.sendMessage();
+			isDisable = false
 		}
 	}
 	let onChangeMessage = (e) => {
@@ -32,11 +48,21 @@ const Dialogs = (props) => {
 			<ul className={s.messages}>
 				{userMessagesElements}
 				<li className={s.input_block} >
-					<textarea className={s.input_field}
+					<TextField
+						className={s.input_field}
 						onChange={onChangeMessage}
-						rows="2"
-						value={newMsgText} />
-					<button onClick={sendMessage}>Send</button>
+						placeholder='Write a message...'
+						value={newMsgText}
+						multiline
+						rows={2} />
+					<Button
+						onClick={sendMessage}
+						variant="contained"
+						color="primary"
+						className={classes.button}
+						endIcon={<SendIcon />}>
+						Send
+					</Button>
 				</li>
 			</ul>
 		</div>

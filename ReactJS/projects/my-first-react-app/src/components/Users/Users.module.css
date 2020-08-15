@@ -1,0 +1,43 @@
+.main_title {
+	margin-left: 30px;
+}
+
+.user_block {
+	display: grid;
+	grid-template: 80px min-content / 80px 1fr;
+	column-gap: 20px;
+	grid-template-areas: 
+	'photo block'
+	'btn block';
+	margin: 15px;
+}
+.photo {
+grid-area: photo;
+height: 60px;
+width: 60px;
+object-fit: cover;
+object-position: top center;
+border-radius: 50%;
+align-self: center;
+justify-self: center;
+}
+.btn {
+	grid-area: btn;
+}
+.about_user {
+	grid-area: block;
+	border: 1px solid black;
+	border-radius: 10px;
+	padding: 15px;
+	max-width: 600px;
+
+	display: grid;
+	grid-template: 1fr 1fr / 1fr 1fr;
+
+}
+.location {
+	justify-self: end;
+}
+.status {
+	align-self: end;
+}
