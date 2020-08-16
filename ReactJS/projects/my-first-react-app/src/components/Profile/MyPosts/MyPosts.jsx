@@ -40,7 +40,7 @@ const MyPosts = (props) => {
 					color="primary"
 					className={classes.button}>
 					Add post
-					</Button>
+				</Button>
 			</div>
 			{postsElements}
 		</div>
