@@ -10,7 +10,7 @@
 }
 .user_block {
 	display: grid;
-	grid-template: 80px min-content / 80px 1fr;
+	grid-template: 85px min-content / 90px 1fr;
 	column-gap: 20px;
 	grid-template-areas: 
 	'photo block'
