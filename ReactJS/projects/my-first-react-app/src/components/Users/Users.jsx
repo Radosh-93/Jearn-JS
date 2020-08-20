@@ -28,7 +28,7 @@ const Users = (props) => {
 					<img className={s.photo} src={el.photos.small !== null ? el.photos.small : userPhoto} alt='photo'/>
 					{el.followed ? <Button
 						onClick={() => {
-							props.onUnfollow(el.id)
+							props.unfollow(el.id)
 						}}
 						variant="contained"
 						color="secondary"
@@ -36,7 +36,7 @@ const Users = (props) => {
 						Unfollow
 					</Button> : <Button
 						onClick={() => {
-							props.onFollow(el.id)
+							props.follow(el.id)
 						}}
 						variant="contained"
 						color="primary"
