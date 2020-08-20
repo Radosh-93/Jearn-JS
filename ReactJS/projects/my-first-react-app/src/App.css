@@ -19,5 +19,12 @@ a {
 
 .app-wrapper .content {
   grid-area: content;
-  background-color: cadetblue;
+  background-color: rgba(95, 158, 160, 0.5);
+  position: relative;
+}
+
+.preloader {
+  position: absolute;
+  top: calc(50% - 40px);
+  left: calc(50% - 100px);
 }
