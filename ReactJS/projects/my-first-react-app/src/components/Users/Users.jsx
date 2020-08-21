@@ -3,6 +3,7 @@ import s from './Users.module.css'
 import {Button} from '@material-ui/core';
 import userPhoto from '../../assets/images/user_img.png'
 import Preloader from "../Common/Preloader/Preloader";
+import {NavLink} from "react-router-dom";
 
 
 const Users = (props) => {
@@ -19,13 +20,15 @@ const Users = (props) => {
 					if (p <= 10) {
 						return <span onClick={() => {
 							props.onPageChanged(p)
-						}} className={p === props.currentPage && s.selectedPage} key={i}>{p}</span>
+						}} className={`page_number ${p === props.currentPage ? s.selectedPage : ''}`} key={i}>{p}</span>
 					}
 				})}
 			</div>
 			{props.isFetching ? <Preloader/> : props.usersData.map(el => (
 				<div key={el.id} className={s.user_block}>
-					<img className={s.photo} src={el.photos.small !== null ? el.photos.small : userPhoto} alt='photo'/>
+					<NavLink to={/profile/ + el.id} className={s.photo_block}>
+						<img className={s.photo} src={el.photos.small !== null ? el.photos.small : userPhoto} alt='photo'/>
+					</NavLink>
 					{el.followed ? <Button
 						onClick={() => {
 							props.unfollow(el.id)

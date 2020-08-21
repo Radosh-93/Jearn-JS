@@ -37,14 +37,14 @@ class UsersApiComponent extends React.Component { //Axios request
 
 	render() {
 		return <Users onPageChanged={this.onPageChanged}
-							 totalUsersCount={this.props.totalUsersCount}
-							 pageSize={this.props.pageSize}
-							 currentPage={this.props.currentPage}
-							 usersData={this.props.usersData}
-							 onFollow={this.props.onFollow}
-							 onUnfollow={this.props.onUnfollow}
-							 isFetching={this.props.isFetching}
-				/>
+									totalUsersCount={this.props.totalUsersCount}
+									pageSize={this.props.pageSize}
+									currentPage={this.props.currentPage}
+									usersData={this.props.usersData}
+									onFollow={this.props.onFollow}
+									onUnfollow={this.props.onUnfollow}
+									isFetching={this.props.isFetching}
+		/>
 	}
 
 } // axios request

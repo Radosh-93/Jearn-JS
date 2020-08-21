@@ -28,3 +28,14 @@ a {
   top: calc(50% - 40px);
   left: calc(50% - 100px);
 }
+
+/*page numbers*/
+
+.page_number {
+  margin: 0 1.5px;
+  border: 1px solid transparent;
+  transition: border 0.3s ease-in-out;
+}
+.page_number:hover {
+  border-bottom: 1px solid black;
+}

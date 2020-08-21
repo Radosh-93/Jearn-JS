@@ -1,5 +1,7 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const SET_USER_DATA = 'SET-USER-DATA';
+
 
 let initialState = {
 	postsData: [
@@ -9,7 +11,8 @@ let initialState = {
 		{ id: 4, content: 'Kukaracha bla bla...', likesCount: 5 },
 		{ id: 5, content: 'Bugaga buzinga...', likesCount: 5 },
 	],
-	newPostText: 'it-kamasutra.com'
+	newPostText: 'it-kamasutra.com',
+	userData: null
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -30,14 +33,18 @@ const profileReducer = (state = initialState, action) => {
 				...state,
 				newPostText: action.newText
 			}
+		case SET_USER_DATA:
+			return {
+				...state, userData: action.userData
+			}
 		default:
 			return state
 	}
 }
 
 export const addPostCreator = () => ({ type: ADD_POST });
-export const updateNewPostTextCreator = (text) => (
-	{ type: UPDATE_NEW_POST_TEXT, newText: text }
-)
+export const updateNewPostTextCreator = (text) => ({ type: UPDATE_NEW_POST_TEXT, newText: text });
+export const setUserProfile = (data) => ({ type: SET_USER_DATA, userData: data });
+
 
 export default profileReducer;
