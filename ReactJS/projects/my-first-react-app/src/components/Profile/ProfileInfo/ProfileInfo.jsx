@@ -3,6 +3,7 @@ import s from './ProfileInfo.module.css'
 import FacebookIcon from '@material-ui/icons/Facebook';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import InstagramIcon from '@material-ui/icons/Instagram';
+import TwitterIcon from '@material-ui/icons/Twitter';
 
 const ProfileInfo = (props) => {
 	console.log(props.profile.contacts)
@@ -15,11 +16,14 @@ const ProfileInfo = (props) => {
 				<img src={props.profile.photos.large} alt=''/>
 				<div className={s.about_profile}>
 					<p>{props.profile.fullName}</p>
-					<span>Contacts:
+					<span className={s.status}>Looking for a job: {props.profile.lookingForAJob ? 'Yes' : 'No'}</span>
+					{props.profile.lookingForAJob ? <span className={s.status}>{props.profile.lookingForAJobDescription}</span> : null}
+					<div className={s.contacts}>Contacts:
 						<a href={props.profile.contacts.facebook}><FacebookIcon/></a>
 						<a href={props.profile.contacts.github}><GitHubIcon/></a>
 						<a href={props.profile.contacts.instagram}><InstagramIcon/></a>
-					</span>
+						<a href={props.profile.contacts.twitter}><TwitterIcon/></a>
+					</div>
 					<span>City: Minsk</span>
 					<span>Education: BSU '11</span>
 					<span>Web Site: <a href="https://www.it-kamasutra.com">https://www.it-kamasutra.com

@@ -20,3 +20,9 @@
 .about_profile span{
   display: block;
 }
+.profile_information .about_profile .contacts {
+  display: flex;
+}
+.profile_information .about_profile .contacts a{
+  margin: 0 2px;
+}
