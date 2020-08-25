@@ -20,6 +20,10 @@
 .about_profile span{
   display: block;
 }
+.about_profile .fullname {
+  font-size: 1.2rem;
+  text-transform: capitalize;
+}
 .profile_information .about_profile .contacts {
   display: flex;
   align-items: center;

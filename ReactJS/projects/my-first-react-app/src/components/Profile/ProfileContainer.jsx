@@ -3,15 +3,17 @@ import Profile from "./Profile";
 import * as axios from "axios";
 
 import {connect} from "react-redux";
-import {setUserProfile} from "../../redux/profile-reducer";
+import {setUserProfile, toggleFetching} from "../../redux/profile-reducer";
 import {withRouter} from "react-router-dom";
 
 class ProfileContainer extends React.Component {
 	componentDidMount() {
 		let userId = this.props.match.params.userId ? this.props.match.params.userId : 2;
+		this.props.toggleFetching(true);
 		axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
 			.then(response => {
-				this.props.setUserProfile(response.data)})
+				this.props.setUserProfile(response.data)});
+				this.props.toggleFetching(false);
 		// this.props.setUserProfile({
 		// 	"aboutMe": "я круто чувак 1001%",
 		// 	"contacts": {
@@ -47,4 +49,4 @@ let mapStateToProps = (state) => ({
 })
 const WithUrlDataContainer = withRouter(ProfileContainer); //Контейнер над ProfileContainer
 
-export default connect(mapStateToProps, {setUserProfile})(WithUrlDataContainer) // визивається в App.js
+export default connect(mapStateToProps, {setUserProfile, toggleFetching})(WithUrlDataContainer) // визивається в App.js

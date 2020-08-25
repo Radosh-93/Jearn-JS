@@ -1,5 +1,6 @@
 import React from 'react'
 import s from './ProfileInfo.module.css'
+import userPhoto from '../../../assets/images/user_img.png'
 import FacebookIcon from '@material-ui/icons/Facebook';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import InstagramIcon from '@material-ui/icons/Instagram';
@@ -13,9 +14,9 @@ const ProfileInfo = (props) => {
 				<img src="https://www.publicdomainpictures.net/pictures/320000/velka/background-image.png" alt=''/>
 			</div>
 			<div className={s.profile_information}>
-				<img src={props.profile.photos.large} alt=''/>
+				<img src={props.profile.photos.large !== null ? props.profile.photos.large : userPhoto} alt=''/>
 				<div className={s.about_profile}>
-					<p>{props.profile.fullName}</p>
+					<p className={s.fullname}>{props.profile.fullName}</p>
 					<span className={s.status}>Looking for a job: {props.profile.lookingForAJob ? 'Yes' : 'No'}</span>
 					{props.profile.lookingForAJob ? <span className={s.status}>{props.profile.lookingForAJobDescription}</span> : null}
 					<div className={s.contacts}>Contacts:
