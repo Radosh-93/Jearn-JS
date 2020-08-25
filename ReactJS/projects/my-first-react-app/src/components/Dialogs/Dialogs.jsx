@@ -28,10 +28,8 @@ const Dialogs = (props) => {
 	); //ввваіа
 
 	let sendMessage = () => {
-		let isDisable = true;
 		if (newMsgText !== '') {
 			props.sendMessage();
-			isDisable = false
 		}
 	}
 	let onChangeMessage = (e) => {

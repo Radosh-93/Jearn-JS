@@ -1,6 +1,4 @@
-import React from 'react'
-import s from './Friends.module.css'
-import { NavLink } from 'react-router-dom';
+//import React from 'react'
 import Friends from "./Friends";
 import {connect} from "react-redux";
 

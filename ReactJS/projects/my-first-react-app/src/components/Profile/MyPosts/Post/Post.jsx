@@ -4,7 +4,7 @@ import s from './Post.module.css'
 const Post = (props) => {
 	return (
 		<div className={s.users_posts}>
-			<img className={s.icon} src="https://selfie2anime.com/img/carousel/2.jpg" />
+			<img className={s.icon} src="https://selfie2anime.com/img/carousel/2.jpg" alt=''/>
 			<div className={s.block_post}>
 				<p>{props.msg}</p>
 				<div className={s.buttons}>

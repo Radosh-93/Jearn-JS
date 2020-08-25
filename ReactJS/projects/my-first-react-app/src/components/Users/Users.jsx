@@ -27,7 +27,7 @@ const Users = (props) => {
 			{props.isFetching ? <Preloader/> : props.usersData.map(el => (
 				<div key={el.id} className={s.user_block}>
 					<NavLink to={/profile/ + el.id} className={s.photo_block}>
-						<img className={s.photo} src={el.photos.small !== null ? el.photos.small : userPhoto} alt='photo'/>
+						<img className={s.photo} src={el.photos.small !== null ? el.photos.small : userPhoto} alt=''/>
 					</NavLink>
 					{el.followed ? <Button
 						onClick={() => {
