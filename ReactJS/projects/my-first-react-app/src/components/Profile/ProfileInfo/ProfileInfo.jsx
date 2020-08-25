@@ -19,10 +19,10 @@ const ProfileInfo = (props) => {
 					<span className={s.status}>Looking for a job: {props.profile.lookingForAJob ? 'Yes' : 'No'}</span>
 					{props.profile.lookingForAJob ? <span className={s.status}>{props.profile.lookingForAJobDescription}</span> : null}
 					<div className={s.contacts}>Contacts:
-						<a href={props.profile.contacts.facebook}><FacebookIcon/></a>
-						<a href={props.profile.contacts.github}><GitHubIcon/></a>
-						<a href={props.profile.contacts.instagram}><InstagramIcon/></a>
-						<a href={props.profile.contacts.twitter}><TwitterIcon/></a>
+						<a rel='noopener noreferrer' target='_blank' href={`https://${props.profile.contacts.facebook}`}><FacebookIcon/></a>
+						<a rel='noopener noreferrer' target='_blank' href={`https://${props.profile.contacts.github}`}><GitHubIcon/></a>
+						<a rel='noopener noreferrer' target='_blank' href={`https://${props.profile.contacts.instagram}`}><InstagramIcon/></a>
+						<a rel='noopener noreferrer' target='_blank' href={`https://${props.profile.contacts.twitter}`}><TwitterIcon/></a>
 					</div>
 					<span>City: Minsk</span>
 					<span>Education: BSU '11</span>
