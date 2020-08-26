@@ -4,7 +4,6 @@ import {Button} from '@material-ui/core';
 import userPhoto from '../../assets/images/user_img.png'
 import Preloader from "../Common/Preloader/Preloader";
 import {NavLink} from "react-router-dom";
-import {followUnfollowAPI} from "../../api/api";
 
 
 const Users = (props) => {
@@ -30,34 +29,23 @@ const Users = (props) => {
                     <NavLink to={/profile/ + el.id} className={s.photo_block}>
                         <img className={s.photo} src={el.photos.small !== null ? el.photos.small : userPhoto} alt=''/>
                     </NavLink>
-                    {el.followed ? <Button onClick={() => {
-                            props.toggleFollowingProgress(true, el.id);
-                            followUnfollowAPI.unfollowUser(el.id).then(data => {
-                                if (data.resultCode === 0) {
-                                    props.unfollow(el.id);
-                                }
-                                props.toggleFollowingProgress(false, el.id);
-                            })
-                        }}
-                                           variant="contained"
-                                           disabled={props.followingInProgress.some(id => id === el.id)}
-                                           color="secondary"
-                                           className={`${s.btn}`}>
-                            Unfollow </Button> :
-                        <Button
+                    {el.followed
+                        ? <Button
                             onClick={() => {
-                                props.toggleFollowingProgress(true, el.id);
-                                followUnfollowAPI.followUser(el.id).then(data => {
-                                    if (data.resultCode === 0) {
-                                        props.follow(el.id)
-                                    }
-                                    props.toggleFollowingProgress(false, el.id);
-                                })
-
+                                props.unfollow(el.id)
                             }}
+                            disabled={props.followingInProgress.some(id => id === el.id)}
+                            variant="contained"
+                            color="secondary"
+                            className={`${s.btn}`}>
+                            Unfollow </Button>
+                        : <Button
+                            onClick={() => {
+                                props.follow(el.id)
+                            }}
+                            disabled={props.followingInProgress.some(id => id === el.id)}
                             variant="contained"
                             color="primary"
-                            disabled={props.followingInProgress.some(id => id === el.id)}
                             className={`${s.btn}`}>
                             Follow
                         </Button>}
