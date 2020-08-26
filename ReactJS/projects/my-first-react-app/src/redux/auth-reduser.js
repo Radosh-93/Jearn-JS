@@ -15,7 +15,7 @@ const authReducer = (state = initialState, action) => {
 		case SET_USER_DATA:
 			return {
 				...state,
-				...action.data,
+				...action.data, // перезаписуємо state, якщо приходять дані з action
 				isLogging: true
 
 			}

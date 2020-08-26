@@ -7,7 +7,6 @@ import InstagramIcon from '@material-ui/icons/Instagram';
 import TwitterIcon from '@material-ui/icons/Twitter';
 
 const ProfileInfo = (props) => {
-	console.log(props.profile.contacts)
 	return (
 		<div>
 			<div className={s.wallpaper}>
