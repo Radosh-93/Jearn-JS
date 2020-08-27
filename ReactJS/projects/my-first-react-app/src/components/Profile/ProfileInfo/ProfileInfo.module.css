@@ -8,10 +8,10 @@
 }
 
 .profile_information {
-  padding: 15px;
   display: grid;
   grid-gap: 40px;
   grid-template-columns: 120px 1fr;
+  margin-bottom: 25px;
 }
 
 .profile_information img{

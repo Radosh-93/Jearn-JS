@@ -1,5 +1,5 @@
 .posts {
-  padding: 0 25px;
+  padding: 25px 0 0 0;
 }
 .post_input {
   width: calc(100% - 20px);

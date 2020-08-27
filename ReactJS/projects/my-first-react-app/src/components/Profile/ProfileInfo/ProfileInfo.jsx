@@ -5,13 +5,14 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import TwitterIcon from '@material-ui/icons/Twitter';
+import ProfileStatus from "./Status/ProfileStatus";
 
 const ProfileInfo = (props) => {
 	return (
 		<div>
-			<div className={s.wallpaper}>
-				<img src="https://www.publicdomainpictures.net/pictures/320000/velka/background-image.png" alt=''/>
-			</div>
+			{/*<div className={s.wallpaper}>*/}
+			{/*	<img src="https://www.publicdomainpictures.net/pictures/320000/velka/background-image.png" alt=''/>*/}
+			{/*</div>*/}
 			<div className={s.profile_information}>
 				<img src={props.profile.photos.large !== null ? props.profile.photos.large : userPhoto} alt=''/>
 				<div className={s.about_profile}>
@@ -31,6 +32,7 @@ const ProfileInfo = (props) => {
 					</span>
 				</div>
 			</div>
+			<ProfileStatus status='Hello my friends'/>
 		</div>
 	)
 }

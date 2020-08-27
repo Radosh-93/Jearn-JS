@@ -39,3 +39,9 @@ a {
 .page_number:hover {
   border-bottom: 1px solid black;
 }
+
+/*profile page*/
+
+.profile_container {
+  margin: 20px;
+}

@@ -6,7 +6,7 @@ import Preloader from "../Common/Preloader/Preloader";
 const Profile = (props) => {
 	if (!props.userData || props.isFetching) return <Preloader/>
 	return (
-		<div>
+		<div className="profile_container">
 			<ProfileInfo  profile={props.userData}/>
 			<MyPostsContainer/>
 		</div>
