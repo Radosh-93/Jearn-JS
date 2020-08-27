@@ -18,7 +18,7 @@ let initialState = {
 	newPostText: 'it-kamasutra.com',
 	userData: null,
 	isFetching: true,
-	userStatus: null
+	userStatus: ""
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -72,7 +72,11 @@ export const getProfile = (userId) => (dispatch) => {
 export const getUserStatus = (userId) => (dispatch) => {
 	profileAPI.getStatus(userId)
 		.then(response => {
-			dispatch(setUserStatus(response.data))
+			if(response.data !== null) {
+				dispatch(setUserStatus(response.data))
+			} else {
+				dispatch(setUserStatus('Enter your status'))
+			}
 		})
 }
 export const updateUserStatus = (status) => (dispatch) => {

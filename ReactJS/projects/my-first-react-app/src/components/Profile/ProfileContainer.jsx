@@ -7,7 +7,7 @@ import {compose} from "redux";
 
 class ProfileContainer extends React.Component {
 	componentDidMount() {
-		let userId = this.props.match.params.userId ? this.props.match.params.userId : 2;
+		let userId = this.props.match.params.userId ? this.props.match.params.userId : 10954;
 		this.props.getProfile(userId) //визиваємо функцію Thunk (getProfile)
 		this.props.getUserStatus(userId)
 	}

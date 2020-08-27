@@ -30,7 +30,7 @@ export const profileAPI = {
         return instance.get(`profile/status/${id}`)
     },
     updateStatus(status) {
-        return instance.put(`status`, {status: status})
+        return instance.put(`profile/status`, {status: status})
     }
 }
 export const authAPI = {
