@@ -4,7 +4,8 @@ import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 
 let mapStateToProps = (state) => ({
-	dialogsPage: state.dialogsPage
+	dialogsPage: state.dialogsPage,
+	isLogging: state.auth.isLogging
 })
 let mapDispatchToProps = (dispatch) => ({
 	sendMessage: () => {

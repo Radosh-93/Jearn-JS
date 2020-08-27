@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import SendIcon from '@material-ui/icons/Send';
+import {Redirect} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
 	button: {
@@ -36,7 +37,7 @@ const Dialogs = (props) => {
 		let text = e.target.value;
 		props.onChangeMessage(text);
 	}
-
+	if (!props.isLogging) return <Redirect to='/login'/>
 
 	return (
 		<div className={s.dialogs}>
