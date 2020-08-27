@@ -4,24 +4,22 @@ import {
     setCurrentPage, getUsers, unfollow, follow
 } from "../../redux/users-reducer";
 import Users from "./Users";
+import {withAuthRedirect} from "../hoc/withAuthRedirect";
+import {compose} from "redux";
 
-class UsersApiComponent extends React.Component { //Axios request
+class UsersContainer extends React.Component {
     componentDidMount() {
-        this.props.getUsers(this.props.currentPage, this.props.pageSize);
+        this.props.getUsers(this.props.currentPage, this.props.pageSize); //axios request
     }
-
     onPageChanged = (pageNumber) => {
         this.props.setCurrentPage(pageNumber);
         this.props.getUsers(pageNumber, this.props.pageSize);
-
     }
-
     render() {
         return <Users {...this.props} onPageChanged={this.onPageChanged}
         />
     }
-
-} // axios request
+}
 
 let mapStateToProps = (state) => ({
     usersData: state.usersPage.usersData,
@@ -52,5 +50,7 @@ let mapStateToProps = (state) => ({
 // 	}
 // })
 
-export default connect(mapStateToProps, {setCurrentPage, getUsers, unfollow, follow
-})(UsersApiComponent)
+export default compose(
+    connect(mapStateToProps, {setCurrentPage, getUsers, unfollow, follow}), //second container
+    withAuthRedirect // fist container
+)(UsersContainer)

@@ -2,7 +2,9 @@ import React from 'react';
 import Profile from "./Profile";
 import {connect} from "react-redux";
 import {getProfile} from "../../redux/profile-reducer";
-import {Redirect, withRouter} from "react-router-dom";
+import {withRouter} from "react-router-dom";
+import {withAuthRedirect} from "../hoc/withAuthRedirect";
+import {compose} from "redux";
 
 class ProfileContainer extends React.Component {
 	componentDidMount() {
@@ -10,17 +12,16 @@ class ProfileContainer extends React.Component {
 		this.props.getProfile(userId) //визиваємо функцію Thunk (getProfile)
 	}
 	render() {
-		if (!this.props.isLogging) return <Redirect to='/login'/>
 		return (
 			<Profile {...this.props}/> // так передаємо всі props в дочірню компоненту (а не так: props = {this.props})
 		)
 	}
 }
-
 let mapStateToProps = (state) => ({
-	userData: state.profilePage.userData,
-	isLogging: state.auth.isLogging
+	userData: state.profilePage.userData
 })
-const WithUrlDataContainer = withRouter(ProfileContainer); //Контейнер над ProfileContainer
-
-export default connect(mapStateToProps, {getProfile})(WithUrlDataContainer) // визивається в App.js
+export default compose(
+	connect(mapStateToProps, {getProfile}),
+	withRouter,
+	withAuthRedirect
+)(ProfileContainer)
