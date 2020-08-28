@@ -20,7 +20,6 @@ let initialState = {
 	isFetching: true,
 	userStatus: ""
 }
-
 const profileReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case ADD_POST:
@@ -75,7 +74,7 @@ export const getUserStatus = (userId) => (dispatch) => {
 			if(response.data !== null) {
 				dispatch(setUserStatus(response.data))
 			} else {
-				dispatch(setUserStatus('Enter your status'))
+				dispatch(setUserStatus(""))
 			}
 		})
 }

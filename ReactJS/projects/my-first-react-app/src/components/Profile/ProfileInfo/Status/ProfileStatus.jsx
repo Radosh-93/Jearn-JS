@@ -22,12 +22,21 @@ class ProfileStatus extends React.Component {
             status: e.currentTarget.value
         })
     }
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(prevProps.status !== this.props.status) {
+            this.setState({
+                status: this.props.status
+            })
+        }
+    }
+
     render() {
+        console.log('render')
         return (
             <div>
                 {!this.state.editMode
                     ? <div>
-                        <span onDoubleClick={this.activateEditMode}>{this.props.status}</span>
+                        <span onDoubleClick={this.activateEditMode}>{this.props.status || '--------'}</span>
                     </div>
                     : <div>
                         <input type="text"
