@@ -21,6 +21,7 @@ a {
   grid-area: content;
   background-color: rgba(95, 158, 160, 0.5);
   position: relative;
+  padding: 20px;
 }
 
 .preloader {
@@ -41,7 +42,3 @@ a {
 }
 
 /*profile page*/
-
-.profile_container {
-  margin: 20px;
-}

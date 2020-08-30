@@ -4,7 +4,7 @@ import {
     setCurrentPage, getUsers, unfollow, follow
 } from "../../redux/users-reducer";
 import Users from "./Users";
-import {withAuthRedirect} from "../hoc/withAuthRedirect";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
 
 class UsersContainer extends React.Component {
