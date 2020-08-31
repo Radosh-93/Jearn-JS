@@ -3,9 +3,9 @@ import './Messages.css'
 
 const Message = (props) => {
 	return (
-		<li className={`message ${props.classMsg}`}>
+		<div className={`message ${props.classMsg}`}>
 			<span>{props.content}</span>
-		</li>
+		</div>
 	)
 }
 

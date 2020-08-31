@@ -3,9 +3,9 @@ import s from './Dialogs.module.css'
 import DialogItem from './DialogItem/DialogItem'
 import Messages from './Messages/Messages'
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import SendIcon from '@material-ui/icons/Send';
+import {Field, reduxForm} from "redux-form";
 
 const useStyles = makeStyles((theme) => ({
 	button: {
@@ -13,54 +13,56 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const Dialogs = (props) => {
+const MessageForm = (props) => {
 	// Style
 	const classes = useStyles();
 	// Style
+	return(
+		<form className={s.input_block} onSubmit={props.handleSubmit}>
+			<Field
+				component={'textarea'}
+				name={'message'}
+				className={s.input_field}
+				placeholder='Write a message...'
+				multiline='true'
+				rows={2} />
+			<Button
+				type={'submit'}
+				variant="contained"
+				color="primary"
+				className={classes.button}
+				endIcon={<SendIcon />}
+				>
+				Send
+			</Button>
+		</form>
+	)
+}
 
-	let newMsgText = props.dialogsPage.newMessageText
+const MessageReduxForm = reduxForm({form: 'message'})(MessageForm)
 
+const Dialogs = (props) => {
 	let usersElements = props.dialogsPage.usersData.map(
 		el => (<DialogItem userName={el.name} id={el.id} key={el.id} img={el.img} />)
 	);
 	let userMessagesElements = props.dialogsPage.messagesData.map(
 		el => (<Messages content={el.content} classMsg={el.classMsg} key={el.id} />)
-	); //ввваіа
+	);
 
-	let sendMessage = () => {
-		if (newMsgText !== '') {
-			props.sendMessage();
+	let onSubmit = (formData) => {
+		if (formData.message !== undefined) {
+			props.sendMessage(formData.message);
 		}
-	}
-	let onChangeMessage = (e) => {
-		let text = e.target.value;
-		props.onChangeMessage(text);
 	}
 	return (
 		<div className={s.dialogs}>
 			<ul className={s.dialogs_items}>
 				{usersElements}
 			</ul>
-			<ul className={s.messages}>
+			<div className={s.messages}>
 				{userMessagesElements}
-				<li className={s.input_block} >
-					<TextField
-						className={s.input_field}
-						onChange={onChangeMessage}
-						placeholder='Write a message...'
-						value={newMsgText}
-						multiline
-						rows={2} />
-					<Button
-						onClick={sendMessage}
-						variant="contained"
-						color="primary"
-						className={classes.button}
-						endIcon={<SendIcon />}>
-						Send
-					</Button>
-				</li>
-			</ul>
+				<MessageReduxForm onSubmit={onSubmit}/>
+			</div>
 		</div>
 	)
 }
