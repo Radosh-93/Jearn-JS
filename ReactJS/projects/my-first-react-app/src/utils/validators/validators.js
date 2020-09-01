@@ -1,9 +1,9 @@
 export const requiredField = value => {
     if(value) return undefined
-    return 'error message'
+    return 'Field is required'
 }
 
 export const maxLength = maxLength => value => {
-    if(value && value.length > maxLength) return `Max length s greater than ${maxLength} symbols`
+    if(value && value.length > maxLength) return `Post length is ${maxLength} symbols`
     return undefined
 }

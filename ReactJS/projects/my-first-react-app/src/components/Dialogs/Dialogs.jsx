@@ -6,12 +6,15 @@ import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import SendIcon from '@material-ui/icons/Send';
 import {Field, reduxForm} from "redux-form";
+import {Textarea} from "../Common/FormsControls/FormsControls";
+import {maxLength, requiredField} from "../../utils/validators/validators";
 
 const useStyles = makeStyles((theme) => ({
 	button: {
 		margin: theme.spacing(1),
 	},
 }));
+const maxLength50 = maxLength(50);
 
 const MessageForm = (props) => {
 	// Style
@@ -20,8 +23,9 @@ const MessageForm = (props) => {
 	return(
 		<form className={s.input_block} onSubmit={props.handleSubmit}>
 			<Field
-				component={'textarea'}
+				component={Textarea}
 				name={'message'}
+				validate={[requiredField, maxLength50]}
 				className={s.input_field}
 				placeholder='Write a message...'
 				multiline='true'
