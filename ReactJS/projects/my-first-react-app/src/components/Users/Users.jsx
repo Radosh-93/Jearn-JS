@@ -23,6 +23,7 @@ const Users = (props) => {
                         }} className={`page_number ${p === props.currentPage ? s.selectedPage : ''}`} key={i}>{p}</span>
                     }
                 })}
+                <span>(-<i>{props.totalUsersCount}</i>-)</span>
             </div>
             {props.isFetching ? <Preloader/> : props.usersData.map(el => (
                 <div key={el.id} className={s.user_block}>
