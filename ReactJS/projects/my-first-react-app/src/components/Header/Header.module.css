@@ -9,13 +9,3 @@
 .header img {
   height: 100%;
 }
-.header .login {
-  margin-right: 20px;
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: white;
-  transition: color .3s ease-in-out;
-}
-.header .login:hover {
-  color: #ffe86f;
-}

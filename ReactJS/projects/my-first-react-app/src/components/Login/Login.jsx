@@ -2,16 +2,18 @@ import React from "react";
 import {Field, reduxForm} from "redux-form";
 import {Input} from "../Common/FormsControls/FormsControls";
 import {requiredField} from "../../utils/validators/validators";
+import {connect} from "react-redux";
+import {login} from "../../redux/auth-reduser";
 
 const LoginForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
                 <Field component={Input}
-                       name={'login'}
+                       name={'email'}
                        validate={[requiredField]}
                        type={'text'}
-                       placeholder={'Login'} /> {/*замість input*/}
+                       placeholder={'Email'} /> {/*Field замість input*/}
             </div>
             <div>
                 <Field component={Input}
@@ -23,6 +25,7 @@ const LoginForm = (props) => {
             <div>
                 <Field component={'input'} name={'rememberMe'} type={'checkbox'} /> remember me
             </div>
+
             <div>
                 <button>Log in</button>
             </div>
@@ -33,14 +36,17 @@ const LoginReduxForm = reduxForm({
     form: 'login' // огортаємо контейнерною компонентою reduxForm, називаємо форму
 })(LoginForm)
 const Login = (props) => {
-    const onSubmit = (formData) => {
-        console.log(formData)
+    const onSubmit = ({email, password, rememberMe}) => {
+        props.login(email, password, rememberMe)
     }
     return (
         <div>
             <h2>Login</h2>
-            <LoginReduxForm onSubmit={onSubmit}/>
+            <LoginReduxForm onSubmit={onSubmit} />
         </div>
     )
 }
-export default Login
+let mapStateToProps = (state) => ({
+    isLogging: state.auth.isLogging
+})
+export default connect(mapStateToProps, {login})(Login)

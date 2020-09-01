@@ -17,8 +17,7 @@ const authReducer = (state = initialState, action) => {
         case SET_USER_DATA:
             return {
                 ...state,
-                ...action.data, // перезаписуємо state, якщо приходять дані з action
-                isLogging: true
+                ...action.payload, // перезаписуємо state, якщо приходять дані з action
 
             }
         case TOGGLE_IS_FETCHING:
@@ -30,7 +29,7 @@ const authReducer = (state = initialState, action) => {
     }
 }
 
-export const setAuthUserData = (userId, email, login) => ({type: SET_USER_DATA, data: {userId, email, login}});
+export const setAuthUserData = (userId, email, login, isLogging) => ({type: SET_USER_DATA, payload: {userId, email, login, isLogging}});
 export const toggleFetching = (status) => ({type: TOGGLE_IS_FETCHING, status});
 
 export const getAuthUser = () => (dispatch) => {
@@ -39,11 +38,30 @@ export const getAuthUser = () => (dispatch) => {
         .then(data => {
             if (data.resultCode === 0) {
                 let {id, email, login} = data.data;
-                dispatch(setAuthUserData(id, email, login));
+                dispatch(setAuthUserData(id, email, login, true));
                 dispatch(toggleFetching(false));
             }
         })
 }
+export const login = (email, password, rememberMe) => (dispatch) => {
+    dispatch(toggleFetching(true));
+    authAPI.login(email, password, rememberMe)
+        .then(response => {
+            if(response.data.resultCode === 0) {
+                dispatch(getAuthUser())
+            }
+        })
+}
 
+export const logout = () => (dispatch) => {
+    dispatch(toggleFetching(true));
+    authAPI.logout()
+        .then(response => {
+            if(response.data.resultCode === 0) {
+                dispatch(setAuthUserData(null, null, null, false));
+                dispatch(toggleFetching(false));
+            }
+        })
+}
 
 export default authReducer;
