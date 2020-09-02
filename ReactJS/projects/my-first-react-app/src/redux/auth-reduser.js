@@ -35,14 +35,14 @@ export const toggleFetching = (status) => ({type: TOGGLE_IS_FETCHING, status});
 
 export const getAuthUser = () => (dispatch) => {
     dispatch(toggleFetching(true));
-    authAPI.me()
+    return authAPI.me() //then повертає Promise, якщо додамо слово return!!!
         .then(data => {
             if (data.resultCode === 0) {
                 let {id, email, login} = data.data;
                 dispatch(setAuthUserData(id, email, login, true));
                 dispatch(toggleFetching(false));
             }
-        })
+        });
 }
 export const login = (email, password, rememberMe) => (dispatch) => {
     dispatch(toggleFetching(true));
