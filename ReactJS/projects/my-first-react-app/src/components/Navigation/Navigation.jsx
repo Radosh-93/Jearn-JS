@@ -2,13 +2,15 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import s from './Navigation.module.css'
 import FriendsContainer from "./Friends/FriendsContainer";
+import {connect} from "react-redux";
 
 
 const Navigation = (props) => {
+	let userId = props.isLogging ? props.userId : 2
 	return (
 		<nav className={s.nav}>
 			<ul>
-				<li><NavLink to="/profile" activeClassName={s.active}>Profile</NavLink></li>
+				<li><NavLink to={`/profile/${userId}`} activeClassName={s.active}>Profile</NavLink></li>
 				<li><NavLink to="/dialogs" activeClassName={s.active}>Messages</NavLink></li>
 				<li><NavLink to="/feed" activeClassName={s.active}>News</NavLink></li>
 				<li><NavLink to="/music" activeClassName={s.active}>Music</NavLink></li>
@@ -20,5 +22,8 @@ const Navigation = (props) => {
 		</nav>
 	)
 }
-
-export default Navigation
+let mapStateToProps = (state) => ({
+	userId: state.auth.userId,
+	isLogging: state.auth.isLogging
+})
+export default connect(mapStateToProps)(Navigation)

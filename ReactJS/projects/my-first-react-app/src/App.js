@@ -14,15 +14,16 @@ import Login from "./components/Login/Login";
 const App = (props) => {
 	return (
 		<div className="app-wrapper">
-			<HeaderContainer/>
-			<Navigation store={props.store}/>
+			<Route path='/:page?/:userId?' render={() => <HeaderContainer/>} />
+			<Navigation />
 			<main className='content'>
-				{/* <Route path='/dialogs' component={Dialogs} /> */}
-				<Route path='/dialogs'
-							 render={() => <DialogsContainer/>}/>
+
 				{/* <Route path='/profile' component={Profile} /> */}
 				<Route path='/profile/:userId?'
 							 render={() => <ProfileContainer/>}/>
+				{/* <Route path='/dialogs' component={Dialogs} /> */}
+				<Route path='/dialogs'
+					   render={() => <DialogsContainer/>}/>
 				<Route path='/users'
                render={() => <UsersContainer/>}/>
                <Route path='/login' render={()=> <Login/>}/>
