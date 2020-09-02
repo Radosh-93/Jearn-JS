@@ -6,7 +6,7 @@ import {compose} from "redux";
 import {withRouter} from "react-router-dom";
 
 const Logout = (props) => {
-    let userId = props.match.params.userId ? props.match.params.userId : 10954;
+    let userId = props.match.params.userId ? props.match.params.userId : props.authorizedUserId;
     let onLogout = () => {
         props.logout();
         props.getProfile(userId);
@@ -18,7 +18,7 @@ const Logout = (props) => {
         </div>
     )
 }
-let mapStateToProps = (state) => ({login: state.auth.login})
+let mapStateToProps = (state) => ({login: state.auth.login, authorizedUserId: state.auth.userId})
 
 export default compose(
     connect(mapStateToProps, {logout, getProfile}),

@@ -28,7 +28,7 @@ let mapStateToProps = (state) => ({
 	userData: state.profilePage.userData,
 	userStatus: state.profilePage.userStatus,
 	isLogging: state.auth.isLogging,
-	userId: state.auth.userId
+	authorizedUserId: state.auth.userId
 })
 export default compose(
 	connect(mapStateToProps, {getProfile, getUserStatus, updateUserStatus}),
