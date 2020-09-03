@@ -21,9 +21,9 @@ class App extends React.Component {
 		this.props.initializeApp()
 	}
 	render() {
-		// if (!this.props.initialized) {
-		// 	return <Preloader/>
-		// }
+		if (!this.props.initialized) {
+			return <Preloader/>
+		}
         return (
             <div className="app-wrapper">
                 <Route path='/:page?/:userId?' render={() => <HeaderContainer/>}/>
@@ -49,6 +49,5 @@ class App extends React.Component {
 }
 let mapStateToProps = (state) => ({
 	initialized: state.app.initialized
-
 })
 export default compose(withRouter, connect(mapStateToProps, {initializeApp}))(App);
