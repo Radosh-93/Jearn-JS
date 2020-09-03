@@ -6,6 +6,7 @@ import GitHubIcon from '@material-ui/icons/GitHub';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import ProfileStatus from "./Status/ProfileStatus";
+import ProfileStatusWithHooks from "./Status/ProfileStatusWithHooks";
 
 const ProfileInfo = (props) => {
 	return (
@@ -32,7 +33,7 @@ const ProfileInfo = (props) => {
 					</span>
 				</div>
 			</div>
-			<ProfileStatus status={props.status} updateUserStatus={props.updateUserStatus}/>
+			<ProfileStatusWithHooks status={props.status} updateUserStatus={props.updateUserStatus}/>
 		</div>
 	)
 }
