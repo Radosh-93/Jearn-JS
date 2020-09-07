@@ -1,6 +1,7 @@
 import {profileAPI} from "../api/api";
 
 const ADD_POST = 'ADD-POST';
+const DELETE_POST = 'DELETE_POST';
 const SET_USER_DATA = 'SET-USER-DATA';
 const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING'
 const SET_USER_STATUS = 'SET_USER_STATUS'
@@ -30,6 +31,11 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 postsData: [...state.postsData, post]
             }
+        case DELETE_POST:
+            return {
+                ...state,
+                postsData: state.postsData.filter(el => el.id !== action.id)
+            }
         case SET_USER_DATA:
             return {
                 ...state, userData: action.userData
@@ -48,6 +54,7 @@ const profileReducer = (state = initialState, action) => {
 }
 
 export const addPost = (newPostText) => ({type: ADD_POST, newPostText});
+export const deletePost = (id) => ({type: DELETE_POST, id});
 
 export const setUserProfile = (data) => ({type: SET_USER_DATA, userData: data});
 export const toggleFetching = (status) => ({type: TOGGLE_IS_FETCHING, isFetching: status});
