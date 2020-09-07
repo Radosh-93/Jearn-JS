@@ -22,7 +22,6 @@ class UsersContainer extends React.Component {
         this.props.getUsers(pageNumber, this.props.pageSize);
     }
     render() {
-        console.log('RENDER users')
         return <Users {...this.props} onPageChanged={this.onPageChanged}
         />
     }
@@ -58,7 +57,6 @@ class UsersContainer extends React.Component {
 // 	}
 // })
 let mapStateToProps = (state) => {
-    console.log('mapStateToProps Users')
     return {
         usersData: getUserSuper(state),
         pageSize: getPageSize(state),
