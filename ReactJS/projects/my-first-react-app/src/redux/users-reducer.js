@@ -6,7 +6,7 @@ const SET_USERS = 'users/SET-USERS'
 const SET_CURRENT_PAGE = 'users/SET-CURRENT-PAGE'
 const SET_TOTAL_USERS_COUNT = 'users/SET-TOTAL-USERS-COUNT'
 const TOGGLE_IS_FETCHING = 'users/TOGGLE-IS-FETCHING'
-const TOGGLE_FOLLOWING_PROGRESS = 'users/TOGGLE_FOLLOWING_PROGRESS'
+const TOGGLE_FOLLOWING_PROGRESS = `users/TOGGLE_FOLLOWING_PROGRESS`
 
 let initialState = {
     usersData: [],
@@ -84,28 +84,21 @@ export const getUsers = (currentPage, pageSize) => async (dispatch) => {
     dispatch(toggleFetching(false));
 }
 
-const followUnfollowFlow = async (dispatch, userId ) => {
-	dispatch(toggleFollowingProgress(true, userId));
-	let data = await userAPI.followUser(userId)
-	if (data.resultCode === 0) {
-		dispatch(acceptFollow(userId));
-	}
-	dispatch(toggleFollowingProgress(false, userId));
+    //refactoring follow unfollow
+const followUnfollowFlow = async (dispatch, userId, apiMethod, actionCreator ) => {
+    dispatch(toggleFollowingProgress(true, userId));
+    let data = await apiMethod(userId)
+    if (data.resultCode === 0) {
+        dispatch(actionCreator(userId));
+    }
+    dispatch(toggleFollowingProgress(false, userId));
 }
 export const follow = (userId) => async (dispatch) => {
-    dispatch(toggleFollowingProgress(true, userId));
-    let data = await userAPI.followUser(userId)
-    if (data.resultCode === 0) {
-        dispatch(acceptFollow(userId));
-    }
-    dispatch(toggleFollowingProgress(false, userId));
+    let apiMethod = userAPI.followUser.bind(userAPI);
+    await followUnfollowFlow(dispatch, userId, apiMethod, acceptFollow)
 }
 export const unfollow = (userId) => async (dispatch) => {
-    dispatch(toggleFollowingProgress(true, userId));
-    let data = await userAPI.unfollowUser(userId)
-    if (data.resultCode === 0) {
-        dispatch(acceptUnfollow(userId));
-    }
-    dispatch(toggleFollowingProgress(false, userId));
+    let apiMethod = userAPI.unfollowUser.bind(userAPI);
+    await followUnfollowFlow(dispatch, userId,apiMethod, acceptUnfollow)
 }
 export default usersReducer;
