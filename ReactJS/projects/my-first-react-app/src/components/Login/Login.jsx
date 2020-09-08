@@ -6,10 +6,10 @@ import {connect} from "react-redux";
 import {login} from "../../redux/auth-reduser";
 import {Redirect} from "react-router-dom";
 
-const LoginForm = (props) => {
+const LoginForm = ({handleSubmit, error}) => {
     let styleError = {color: 'red', border: '1px solid red', padding: '3px 6px'}
     return (
-        <form onSubmit={props.handleSubmit}>
+        <form onSubmit={handleSubmit}>
             <div>
                 <Field component={Input}
                        name={'email'}
@@ -27,7 +27,7 @@ const LoginForm = (props) => {
             <div>
                 <Field component={'input'} name={'rememberMe'} type={'checkbox'}/> remember me
             </div>
-            {props.error && <span style={styleError}>{props.error}</span>}
+            {error && <span style={styleError}>{error}</span>}
             <div>
                 <button>Log in</button>
             </div>

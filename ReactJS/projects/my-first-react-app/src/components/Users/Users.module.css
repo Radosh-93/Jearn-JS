@@ -5,13 +5,7 @@
 .main_title {
 	margin-left: 15px;
 }
-.pagination {
-	display: inline-block;
-	cursor: pointer;
-}
-.selectedPage {
-	font-weight: bold;
-}
+
 .user_block {
 	display: grid;
 	grid-template: 85px min-content / 90px 1fr;
