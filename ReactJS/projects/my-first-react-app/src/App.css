@@ -44,3 +44,12 @@ span {
 }
 
 /*profile page*/
+.post_status {
+  display: inline-flex;
+  align-items: center;
+  cursor: default;
+}
+.post_status .btn_icon {
+  margin: -3px 0 0 5px;
+  cursor: pointer;
+}
