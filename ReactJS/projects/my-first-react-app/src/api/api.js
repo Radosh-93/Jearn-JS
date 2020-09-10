@@ -30,6 +30,9 @@ export const profileAPI = {
     },
     updateStatus(status) {
         return instance.put(`profile/status`, {status: status})
+    },
+    getFollowingStatus (id) {
+        return instance.get(`follow/${id}`)
     }
 }
 export const authAPI = {

@@ -1,10 +1,11 @@
-import {profileAPI} from "../api/api";
+import {profileAPI, userAPI} from "../api/api";
 
 const ADD_POST = 'profile/ADD-POST';
 const DELETE_POST = 'profile/DELETE_POST';
 const SET_USER_DATA = 'profile/SET-USER-DATA';
-const TOGGLE_IS_FETCHING = 'profile/TOGGLE-IS-FETCHING'
-const SET_USER_STATUS = 'profile/SET_USER_STATUS'
+const TOGGLE_IS_FETCHING = 'profile/TOGGLE-IS-FETCHING';
+const SET_USER_STATUS = 'profile/SET_USER_STATUS';
+const SET_USER_FOLLOWING_STATUS = 'profile/SET_USER_FOLLOWING_STATUS';
 
 
 let initialState = {
@@ -17,7 +18,8 @@ let initialState = {
     ],
     userData: null,
     isFetching: true,
-    userStatus: ""
+    userStatus: "",
+    isFollow: false
 }
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -48,6 +50,10 @@ const profileReducer = (state = initialState, action) => {
             return {
                 ...state, userStatus: action.text
             }
+        case SET_USER_FOLLOWING_STATUS:
+            return {
+                ...state, isFollow: action.isFollow
+            }
         default:
             return state
     }
@@ -58,12 +64,12 @@ export const deletePost = (id) => ({type: DELETE_POST, id});
 export const setUserProfile = (data) => ({type: SET_USER_DATA, userData: data});
 export const toggleFetching = (status) => ({type: TOGGLE_IS_FETCHING, isFetching: status});
 export const setUserStatus = (text) => ({type: SET_USER_STATUS, text});
+export const setUserFollowingStatus = (isFollow) => ({type: SET_USER_FOLLOWING_STATUS, isFollow});
 
 /*=====Thunk=======*/
 export const getProfile = (userId) => async (dispatch) => {
     dispatch(toggleFetching(true))
     let response = await profileAPI.getProfile(userId);
-    console.log(response)
     dispatch(setUserProfile(response.data));
     if (response.data !== null) {
         dispatch(toggleFetching(false))
@@ -81,6 +87,12 @@ export const updateUserStatus = (status) => async (dispatch) => {
     let response = await profileAPI.updateStatus(status)
     if (response.data.resultCode === 0) {
         dispatch(setUserStatus(status))
+    }
+}
+export const getUserFollowingStatus = (userId) => async (dispatch) => {
+    let response = await profileAPI.getFollowingStatus(userId);
+    if(response.status === 200) {
+        dispatch(setUserFollowingStatus(response.data))
     }
 }
 export default profileReducer;

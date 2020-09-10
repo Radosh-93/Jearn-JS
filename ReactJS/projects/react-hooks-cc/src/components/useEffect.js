@@ -21,10 +21,18 @@ export const UseEffect = () => {
 	}
 	useEffect(() => {
 		window.addEventListener('mousemove', mouseMoveHandler)
+	}, []);
+	useEffect(() => {
+		console.log('Subscribe');
+		return () => { console.log('Unsubscribe') }
 	}, [])
 	return (
 		<div>
-			<h3>Source: {type}</h3>
+			<p className='alert alert-info mt-2'>
+				С помощью хука эффекта <b>useEffect</b> вы можете выполнять побочные эффекты из функционального компонента. (запрашивать данные, делать подписки или вручную менять DOM из React-компонента)
+			</p>
+
+			<h3>📌 Source: {type}</h3>
 
 			<button onClick={() => setType('users')}
 			        className='btn btn-success btn-sm mr-2'>Users

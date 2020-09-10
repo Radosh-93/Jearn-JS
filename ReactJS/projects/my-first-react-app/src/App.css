@@ -1,3 +1,4 @@
+
 ul {
   margin: 0;
 }
@@ -21,7 +22,7 @@ span {
 
 .app-wrapper .content {
   grid-area: content;
-  background-color: rgba(95, 158, 160, 0.5);
+  background-image: linear-gradient(to top, #5ee7df 0%, #b490ca 100%);
   position: relative;
   padding: 20px;
 }
@@ -44,12 +45,43 @@ span {
 }
 
 /*profile page*/
+.profile_card_status {
+  margin-bottom: 15px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #324e63;
+}
 .post_status {
   display: inline-flex;
   align-items: center;
   cursor: default;
+  font-size: 18px;
+  font-weight: 500;
+  color: #324e63;
 }
 .post_status .btn_icon {
   margin: -3px 0 0 5px;
   cursor: pointer;
+}
+
+/*Icons*/
+.fb {
+  background: linear-gradient(45deg, #3b5998, #0078d7);
+  box-shadow: 0px 4px 30px rgba(43, 98, 169, 0.5);
+}
+.gh {
+  background: linear-gradient(45deg, #333333, #626b73);
+  box-shadow: 0px 4px 30px rgba(63, 65, 67, 0.6);
+}
+.ig {
+  background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+  box-shadow: 0px 4px 30px rgba(120, 64, 190, 0.6);
+}
+.tw {
+  background: linear-gradient(45deg, #1da1f2,#0e71c8);
+  box-shadow: 0px 4px 30px rgba(19, 127, 212, 0.7)
+}
+.lk {
+  background: linear-gradient(45deg, #d5135a, #f05924);
+  box-shadow: 0px 4px 30px rgba(223, 45, 70, 0.6);
 }

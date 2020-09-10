@@ -29,6 +29,9 @@ export const UseState = () => {
 	}
 	return (
 		<div>
+			<p className='alert alert-info mt-2' >Xук <b>useState</b> предоставляет функциональным компонентам доступ к состоянию React.</p>
+			<p className='alert alert-dark'>Функция <b>useState</b> принимает только один аргумент, это начальное состояние. </p>
+
 			<h2>Counter: {count}</h2>
 			<button className='btn btn-success btn-sm mr-3'
 			        onClick={increment}>Increment</button>
