@@ -5,14 +5,15 @@ import Pagination from "../Common/Pagination/Pagination";
 import User from "./User";
 
 
-const Users = ({totalUsersCount, pageSize, currentPage, onPageChanged, ...props}) => {
+const Users = ({totalItemsCount, pageSize, currentPage, onPageChanged, portionSize, ...props}) => {
     return (
         <div className={s.users_page}>
-            <h1 className={s.main_title}>Users</h1>
-            <Pagination totalUsersCount={totalUsersCount}
+            <h1 className={s.main_title}>Users ({totalItemsCount})</h1>
+            <Pagination totalItemsCount={totalItemsCount}
                         pageSize={pageSize}
                         onPageChanged={onPageChanged}
-                        currentPage={currentPage}/>
+                        currentPage={currentPage}
+                        portionSize={portionSize}/>
             {props.isFetching
                 ? <Preloader/>
                 : props.usersData.map(user => (

@@ -8,8 +8,8 @@ import {compose} from "redux";
 import {
     getCurrentPage,
     getFetchingStatus, getFollowingProgress,
-    getPageSize,
-    getTotalUsersCount,
+    getPageSize, getPortionSize,
+    getTotalItemsCount,
     getUserSuper
 } from "../../redux/users-selectors";
 
@@ -60,7 +60,8 @@ let mapStateToProps = (state) => {
     return {
         usersData: getUserSuper(state),
         pageSize: getPageSize(state),
-        totalUsersCount: getTotalUsersCount(state),
+        totalItemsCount: getTotalItemsCount(state),
+        portionSize: getPortionSize(state),
         currentPage: getCurrentPage(state),
         isFetching: getFetchingStatus(state),
         followingInProgress: getFollowingProgress(state)
