@@ -14,7 +14,7 @@ let initialState = {
     portionSize: 10,
     totalItemsCount: 100,
     currentPage: 1,
-    isFetching: true,
+    isFetching: false,
     followingInProgress: [],
     fake: 10
 }
@@ -73,7 +73,7 @@ export const acceptUnfollow = (userId) => ({type: UNFOLLOW, userId})
 export const setUsers = (users) => ({type: SET_USERS, users: users})
 export const setCurrentPage = (page) => ({type: SET_CURRENT_PAGE, page})
 export const setTotalItemsCount = (count) => ({type: SET_TOTAL_USERS_COUNT, count})
-export const toggleFetching = (status) => ({type: TOGGLE_IS_FETCHING, status})
+const toggleFetching = (status) => ({type: TOGGLE_IS_FETCHING, status})
 export const toggleFollowingProgress = (status, userId) => ({type: TOGGLE_FOLLOWING_PROGRESS, status, userId})
 
 //Thunks
