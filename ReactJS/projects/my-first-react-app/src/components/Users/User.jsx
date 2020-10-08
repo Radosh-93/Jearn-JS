@@ -35,7 +35,7 @@ const User = ({user, followingInProgress, follow, unfollow}) => {
                 </Button>}
             <div className={s.about_user}>
                 <span className={s.name}>{user.name}</span>
-                <span className={s.location}>{"${user.location.city}, ${user.location.country}"}</span>
+                <span className={s.location}>{"Country: unknown"}</span>
                 <span className={s.status}>{user.status}</span>
             </div>
         </div>

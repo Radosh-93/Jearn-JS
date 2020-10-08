@@ -18,7 +18,7 @@ const Pagination = ({totalItemsCount, pageSize, currentPage, onPageChanged, port
             {portionNumber > 1
                 ? <div style={{display: "inline-block"}}>
                     <button onClick={() => setPortionNumber(1)}>First</button>
-                    <button onClick={() => setPortionNumber(portionCount - 1)}>Prev</button>
+                    <button onClick={() => setPortionNumber(portionNumber - 1)}>Prev</button>
                 </div> : ''}
             {pages.filter(p => p >= leftPortionNumber && p <= rightPortionNumber)
                 .map((page, i) => {

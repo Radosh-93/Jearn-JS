@@ -5,7 +5,7 @@ import Messages from './Messages/Messages'
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import SendIcon from '@material-ui/icons/Send';
-import {Field, reduxForm} from "redux-form";
+import {Field, reduxForm, reset} from "redux-form";
 import {Textarea} from "../Common/FormsControls/FormsControls";
 import {maxLength, requiredField} from "../../utils/validators/validators";
 
@@ -57,6 +57,7 @@ const Dialogs = (props) => {
 		if (formData.message !== undefined) {
 			props.sendMessage(formData.message);
 		}
+		props.dispatch(reset('message'))
 	}
 	return (
 		<div className={s.dialogs}>
