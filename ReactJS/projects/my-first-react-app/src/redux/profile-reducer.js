@@ -61,10 +61,10 @@ const profileReducer = (state = initialState, action) => {
 
 export const addPost = (newPostText) => ({type: ADD_POST, newPostText});
 export const deletePost = (id) => ({type: DELETE_POST, id});
-export const setUserProfile = (data) => ({type: SET_USER_DATA, userData: data});
-export const toggleFetching = (status) => ({type: TOGGLE_IS_FETCHING, isFetching: status});
-export const setUserStatus = (text) => ({type: SET_USER_STATUS, text});
-export const setUserFollowingStatus = (isFollow) => ({type: SET_USER_FOLLOWING_STATUS, isFollow});
+const setUserProfile = (data) => ({type: SET_USER_DATA, userData: data});
+const toggleFetching = (status) => ({type: TOGGLE_IS_FETCHING, isFetching: status});
+const setUserStatus = (text) => ({type: SET_USER_STATUS, text});
+const setUserFollowingStatus = (isFollow) => ({type: SET_USER_FOLLOWING_STATUS, isFollow});
 
 /*=====Thunk=======*/
 export const getProfile = (userId) => async (dispatch) => {

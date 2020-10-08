@@ -11,8 +11,9 @@ const Pagination = ({totalItemsCount, pageSize, currentPage, onPageChanged, port
     let [portionNumber, setPortionNumber] = useState(1)
     let leftPortionNumber = (portionNumber - 1) * portionSize + 1;
     let rightPortionNumber = portionNumber * portionSize;
-
-    useEffect(() => onPageChanged(leftPortionNumber), [portionNumber])
+    // useEffect(() => {
+    //         onPageChanged(leftPortionNumber)
+    // }, [portionNumber])
     return (
         <div className={s.pagination}>
             {portionNumber > 1
@@ -31,7 +32,7 @@ const Pagination = ({totalItemsCount, pageSize, currentPage, onPageChanged, port
             {portionCount > portionNumber
                 ? <div style={{display: "inline-block"}}>
                     <span style={{cursor: "default"}}>...{pagesCount}</span>
-                    <button onClick={() => setPortionNumber(portionNumber + 1)}>Next</button>
+                    <button onClick={() => setPortionNumber(portionNumber + 1)}>{`fff`}</button>
                     <button onClick={() => setPortionNumber(portionCount)}>Last</button>
                 </div>
                 : ''}

@@ -38,7 +38,9 @@ let mapStateToProps = (state) => ({
 	userStatus: state.profilePage.userStatus,
 	isLogging: state.auth.isLogging,
 	isFollow: state.profilePage.isFollow,
+	isFetching: state.profilePage.isFetching,
 	authorizedUserId: state.auth.userId,
+
 
 })
 export default compose(
